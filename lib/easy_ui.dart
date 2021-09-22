@@ -107,3 +107,16 @@ extension EasyUIFitWidgetExtension on Widget {
   Widget get fitFill => FittedBox(fit: BoxFit.fill, child: this);
   Widget get fitScaleDown => FittedBox(fit: BoxFit.scaleDown, child: this);
 }
+
+/// Extensions to make null safety easier to deal with
+extension NullSafetyExtension<T> on T {
+
+  /// Kotlin style of coding
+  /// This could be used on the Nullable objects to do some operation on it
+  /// after we make sure that it's not null
+  T let(void Function(T) f) {
+    f(this);
+    return this;
+  }
+
+}
