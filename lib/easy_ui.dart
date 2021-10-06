@@ -2,6 +2,19 @@ library easy_ui;
 
 import 'package:flutter/material.dart';
 
+/// This is used to setup the static values that are used within the package
+class EasyUIConfig {
+  /// a border radius that is round
+  static BorderRadius roundBorderRadius = BorderRadius.all(Radius.circular(14));
+
+  static void setConfig({BorderRadius? roundBorderRadius}) {
+    // check to see if it's not null before setting it
+   roundBorderRadius?.let((it) {
+     EasyUIConfig.roundBorderRadius = roundBorderRadius;
+   });
+  }
+}
+
 /// extension of the [num] to contain more useful helper methods and getters
 extension EasyUINumberExtension on num {
   /// returns an [EdgeInsets] that includes this number as a padding for all sides
@@ -30,11 +43,19 @@ extension EasyUIWidgetExtension on Widget {
   /// Makes this widget have round corners. You could also specify [border]
   Widget withRoundCorners({
     BoxBorder? border,
-    BorderRadius? borderRadius = const BorderRadius.all(Radius.circular(14))
+    BorderRadius? borderRadius
   }) {
-    return ClipRRect(
-      borderRadius: borderRadius,
+    BorderRadius b = borderRadius ?? EasyUIConfig.roundBorderRadius;
+    Widget clipR = ClipRRect(
+      borderRadius: b,
       child: this,
+    );
+    return border == null ? clipR : Container(
+      child: clipR,
+      decoration: BoxDecoration(
+        border: border,
+        borderRadius: b
+      ),
     );
   }
 
