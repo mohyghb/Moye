@@ -119,7 +119,7 @@ extension EasyUIAlignWidgetExtension on Widget {
   Align get alignLeft => Align(alignment: Alignment.centerLeft, child: this);
 }
 
-/// Extensions about fitting widgets
+/// Extension about fitting widgets
 extension EasyUIFitWidgetExtension on Widget {
   Widget get fit => FittedBox(child: this);
   Widget get fitWidth => FittedBox(fit: BoxFit.fitWidth, child: this);
@@ -129,9 +129,37 @@ extension EasyUIFitWidgetExtension on Widget {
   Widget get fitScaleDown => FittedBox(fit: BoxFit.scaleDown, child: this);
 }
 
+/// An extension to access different variables of a state more easily
+extension EasyUIStateExtension on State {
+  double get screenWidth => MediaQuery.of(context).size.width;
+  double get screenHeight => MediaQuery.of(context).size.height;
+  bool get isThemeDark => Theme.of(context).brightness == Brightness.dark;
+  Color get canvasColor => Theme.of(context).canvasColor;
+  Color get primaryColor => Theme.of(context).primaryColor;
+  TextTheme get textTheme => Theme.of(context).textTheme;
+  TextStyle? get headline3Bold => textTheme.headline3?.copyWith(fontWeight: FontWeight.bold);
+  ThemeData get theme => Theme.of(context);
+  BoxBorder get defaultBorder => Border.all(color: textTheme.headline6?.color ?? primaryColor);
+  BoxBorder get defaultCanvasColorBorder => Border.all(color: canvasColor);
+  BoxBorder get whiteBorder => Border.all(color: Colors.white70);
+  BoxBorder? get whiteBorderIfThemeDark => isThemeDark ? whiteBorder : null;
+  BoxBorder? get greyBorderIfThemeDark => isThemeDark ? Border.all(color: Colors.grey) : null;
+  Widget get empty => SizedBox();
+}
+
+/// Extension for text styles to make everything easier
+extension EasyUITextStyleExtension on TextStyle? {
+  /// Make this TextStyle font bold
+  TextStyle? get bold => this?.copyWith(fontWeight: FontWeight.bold);
+
+  /// set the color of this TextStyle to [color]
+  TextStyle? withColor(Color color) {
+    return this?.copyWith(color: color);
+  }
+}
+
 /// Extensions to make null safety easier to deal with
 extension NullSafetyExtension<T> on T {
-
   /// Kotlin style of coding
   /// This could be used on the Nullable objects to do some operation on it
   /// after we make sure that it's not null
@@ -139,5 +167,4 @@ extension NullSafetyExtension<T> on T {
     f(this);
     return this;
   }
-
 }
