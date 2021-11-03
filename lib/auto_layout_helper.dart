@@ -42,3 +42,41 @@ class AutoLayout extends StatelessWidget {
 
   bool _showLargest(int i, double width) => i == breakpoints.length - 1 && width >= breakpoints[i];
 }
+
+/// A helper for [AutoLayout] to make it easier develop for different screen sizes.
+class AutoLayoutHelper {
+
+  /// values less than 300 are considered [NARROW]
+  static const double NARROW = 300;
+  /// values between (300 - 650) are considered [SMALL]
+  static const double SMALL = 650;
+  /// values between (650 - 950) are considered [MEDIUM]
+  static const double MEDIUM = 950;
+  /// values after 950 are considered [LARGE]
+  static const double LARGE = 950;
+
+  /// default screen sizes as a list so that you can use it as the [AutoLayout.breakpoints]
+  static const List<double> DEFAULT_SCREEN_SIZES = [SMALL, MEDIUM, LARGE];
+
+
+  /// returns true if the [width] is in the [NARROW] range
+  static bool isNarrow(double width) {
+    return width <= NARROW;
+  }
+
+  /// returns true if the [width] is in the [SMALL] range
+  static bool isSmall(double width) {
+    return width > NARROW && width <= SMALL;
+  }
+
+  /// returns true if the [width] is in the [MEDIUM] range
+  static bool isMedium(double width) {
+    return width > SMALL && width <= MEDIUM;
+  }
+
+  /// returns true if the [width] is greater than [MEDIUM]
+  static bool isLarge(double width) {
+    return width > MEDIUM;
+  }
+
+}
