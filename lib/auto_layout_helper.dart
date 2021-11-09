@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:easy_ui/extensions/array_extension.dart';
+import 'package:moye/extensions/array_extension.dart';
 
 /// This stateless widget will allow the developers to develop for multiple screen
 /// sizes. You can create [breakpoints], the points in which the auto-layout should

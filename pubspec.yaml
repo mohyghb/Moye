@@ -1,7 +1,7 @@
-name: easy_ui
+name: moye
 description: A lightweight Flutter package that aims to reduce the amount of code needed to build beautiful UI.
 version: 0.0.1
-homepage:
+homepage: https://mohyaghoub.com
 
 environment:
   sdk: ">=2.12.0 <3.0.0"

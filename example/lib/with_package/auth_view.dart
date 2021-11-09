@@ -1,7 +1,7 @@
 import 'package:example/demo_utils.dart';
 import 'package:flutter/material.dart';
-import 'package:easy_ui/easy_ui.dart';
-import 'package:easy_ui/utils/easy_ui_container.dart';
+import 'package:moye/easy_ui.dart';
+import 'package:moye/utils/easy_ui_container.dart';
 import 'package:flutter/services.dart';
 
 class AuthView extends StatefulWidget {
