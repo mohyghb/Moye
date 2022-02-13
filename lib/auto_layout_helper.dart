@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:moye/extensions/array_extension.dart';
 
 /// This stateless widget will allow the developers to develop for multiple screen
@@ -15,6 +14,9 @@ class AutoLayout extends StatelessWidget {
       : assert(breakpoints.length == builders.length, 'Size of breakpoints and builders must be the same'),
         assert(breakpoints.isAscendingOrder, 'Breakpoints should be in ascending order for auto layout to be able to use them'),
         super(key: key);
+
+  AutoLayout.recommended({required LayoutWidgetBuilder smallBuilder, required  LayoutWidgetBuilder mediumBuilder, required LayoutWidgetBuilder largeBuilder, Key? key})
+      : this(breakpoints: AutoLayoutHelper.DEFAULT_SCREEN_SIZES, builders: [smallBuilder, mediumBuilder, largeBuilder], key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -79,4 +81,22 @@ class AutoLayoutHelper {
     return width > MEDIUM;
   }
 
+}
+
+/// An interface to make it easier to implement auto layout capabilities
+abstract class IAutoLayout {
+
+  Widget buildSmall(BuildContext context, BoxConstraints constraints);
+  Widget buildMedium(BuildContext context, BoxConstraints constraints);
+  Widget buildLarge(BuildContext context, BoxConstraints constraints);
+
+}
+
+/// an extension to make it easier to build an AutoLayout from IAutoLayout interface
+extension AutoLayoutExtension on IAutoLayout {
+  AutoLayout get layout => AutoLayout.recommended(
+      smallBuilder: this.buildSmall,
+      mediumBuilder: this.buildMedium,
+      largeBuilder: this.buildLarge
+  );
 }

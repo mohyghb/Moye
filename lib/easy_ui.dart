@@ -160,10 +160,15 @@ extension EasyUITextStyleExtension on TextStyle? {
 
 /// Extensions to make null safety easier to deal with
 extension NullSafetyExtension<T> on T {
+
   /// Kotlin style of coding
   /// This could be used on the Nullable objects to do some operation on it
   /// after we make sure that it's not null
-  T let(void Function(T) f) {
+  R let<R>(R Function(T) f) {
+    return f(this);
+  }
+
+  T also(Function(T) f) {
     f(this);
     return this;
   }
