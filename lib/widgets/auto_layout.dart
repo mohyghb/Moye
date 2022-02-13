@@ -6,6 +6,11 @@ import 'package:moye/extensions/array_extension.dart';
 /// use that widget when the screen size is within those thresholds
 ///
 /// if no [breakpoints] is provided, return a container
+///
+///
+/// It is important to note that this widget relies on [LayoutBuilder] and it can
+/// work for nested widgets as well (not only for full screens). So you can utilize this
+/// widget differently based on your needs
 class AutoLayout extends StatelessWidget {
   final List<double> breakpoints;
   final List<LayoutWidgetBuilder> builders;

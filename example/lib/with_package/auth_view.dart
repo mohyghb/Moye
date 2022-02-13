@@ -1,8 +1,8 @@
 import 'package:example/demo_utils.dart';
 import 'package:flutter/material.dart';
-import 'package:moye/easy_ui.dart';
-import 'package:moye/utils/easy_ui_container.dart';
 import 'package:flutter/services.dart';
+import 'package:moye/extensions/moye_extensions.dart';
+import 'package:moye/utils/easy_ui_container.dart';
 
 class AuthView extends StatefulWidget {
   @override
