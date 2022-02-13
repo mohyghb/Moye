@@ -2,21 +2,25 @@ library easy_ui;
 
 import 'package:flutter/material.dart';
 
+/// set of useful extensions that would lessen the development time and allow you to
+/// focus on making new features rather than implementing them
+
+
 /// This is used to setup the static values that are used within the package
-class EasyUIConfig {
+class MoyeConfig {
   /// a border radius that is round
   static BorderRadius roundBorderRadius = BorderRadius.all(Radius.circular(14));
 
   static void setConfig({BorderRadius? roundBorderRadius}) {
     // check to see if it's not null before setting it
    roundBorderRadius?.let((it) {
-     EasyUIConfig.roundBorderRadius = roundBorderRadius;
+     MoyeConfig.roundBorderRadius = roundBorderRadius;
    });
   }
 }
 
 /// extension of the [num] to contain more useful helper methods and getters
-extension EasyUINumberExtension on num {
+extension MoyeNumberExtension on num {
   /// returns an [EdgeInsets] that includes this number as a padding for all sides
   EdgeInsets get allInset {
     return EdgeInsets.all(this.toDouble());
@@ -38,14 +42,14 @@ extension EasyUINumberExtension on num {
   Widget get expanded => Expanded(flex: this.toInt(), child: const SizedBox());
 }
 
-extension EasyUIWidgetExtension on Widget {
+extension MoyeWidgetExtension on Widget {
 
   /// Makes this widget have round corners. You could also specify [border]
   Widget withRoundCorners({
     BoxBorder? border,
     BorderRadius? borderRadius
   }) {
-    BorderRadius b = borderRadius ?? EasyUIConfig.roundBorderRadius;
+    BorderRadius b = borderRadius ?? MoyeConfig.roundBorderRadius;
     Widget clipR = ClipRRect(
       borderRadius: b,
       child: this,
@@ -106,7 +110,7 @@ extension EasyUIWidgetExtension on Widget {
 }
 
 /// Extensions about aligning widgets on screen
-extension EasyUIAlignWidgetExtension on Widget {
+extension MoyeAlignWidgetExtension on Widget {
   Align align(AlignmentGeometry alignmentGeometry) => Align(alignment: alignmentGeometry, child: this);
   Align get alignCenter => Align(alignment: Alignment.center, child: this);
   Align get alignBottom => Align(alignment: Alignment.bottomCenter, child: this);
@@ -120,7 +124,7 @@ extension EasyUIAlignWidgetExtension on Widget {
 }
 
 /// Extension about fitting widgets
-extension EasyUIFitWidgetExtension on Widget {
+extension MoyeFitWidgetExtension on Widget {
   Widget get fit => FittedBox(child: this);
   Widget get fitWidth => FittedBox(fit: BoxFit.fitWidth, child: this);
   Widget get fitHeight => FittedBox(fit: BoxFit.fitHeight, child: this);
@@ -130,7 +134,7 @@ extension EasyUIFitWidgetExtension on Widget {
 }
 
 /// An extension to access different variables of a state more easily
-extension EasyUIStateExtension on State {
+extension MoyeStateExtension on State {
   double get screenWidth => MediaQuery.of(context).size.width;
   double get screenHeight => MediaQuery.of(context).size.height;
   bool get isThemeDark => Theme.of(context).brightness == Brightness.dark;
@@ -148,7 +152,7 @@ extension EasyUIStateExtension on State {
 }
 
 /// Extension for text styles to make everything easier
-extension EasyUITextStyleExtension on TextStyle? {
+extension MoyeTextStyleExtension on TextStyle? {
   /// Make this TextStyle font bold
   TextStyle? get bold => this?.copyWith(fontWeight: FontWeight.bold);
 
@@ -160,10 +164,15 @@ extension EasyUITextStyleExtension on TextStyle? {
 
 /// Extensions to make null safety easier to deal with
 extension NullSafetyExtension<T> on T {
+
   /// Kotlin style of coding
   /// This could be used on the Nullable objects to do some operation on it
   /// after we make sure that it's not null
-  T let(void Function(T) f) {
+  R let<R>(R Function(T) f) {
+    return f(this);
+  }
+
+  T also(Function(T) f) {
     f(this);
     return this;
   }
