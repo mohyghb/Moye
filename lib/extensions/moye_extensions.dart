@@ -151,6 +151,18 @@ extension MoyeStateExtension on State {
   Widget get empty => SizedBox();
 }
 
+/// An extension for a context
+extension MoyeContextExtension on BuildContext {
+  double get screenWidth => MediaQuery.of(this).size.width;
+  double get screenHeight => MediaQuery.of(this).size.height;
+  bool get isThemeDark => Theme.of(this).brightness == Brightness.dark;
+  Color get canvasColor => Theme.of(this).canvasColor;
+  Color get primaryColor => Theme.of(this).primaryColor;
+  TextTheme get textTheme => Theme.of(this).textTheme;
+  TargetPlatform get platform => Theme.of(this).platform;
+  ThemeData get theme => Theme.of(this);
+}
+
 /// Extension for text styles to make everything easier
 extension MoyeTextStyleExtension on TextStyle? {
   /// Make this TextStyle font bold
