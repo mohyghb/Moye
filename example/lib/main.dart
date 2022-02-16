@@ -1,6 +1,5 @@
 import 'package:example/with_package/auth_view.dart';
 import 'package:flutter/material.dart';
-
 void main() {
   // SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge).then((value) {
   //   runApp(MyApp());
