@@ -1,3 +1,7 @@
+## 0.0.3
+* Added more extensions and utils
+* Breaking-Change - changed the location of various files in the package 
+
 ## 0.0.2
 * Added repository address in the project pubspec file
 
