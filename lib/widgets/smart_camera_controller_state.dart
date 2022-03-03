@@ -23,7 +23,7 @@ abstract class SmartCameraControllerState<T extends StatefulWidget> extends Stat
     super.initState();
     WidgetsBinding.instance?.addPostFrameCallback((_) async {
       // add a delay between initializing the camera view and the view being loaded
-      await Future.delayed(const Duration(milliseconds: 200));
+      await Future.delayed(delayInitialization);
       initStateAsync();
     });
   }
