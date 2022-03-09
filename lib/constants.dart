@@ -1,47 +1,45 @@
 import 'package:flutter/material.dart';
 
+const double s4 = 4;
+const double s8 = 8;
+const double s16 = 16;
+const double s24 = 24;
+const double s32 = 32;
+const double s40 = 40;
+const double s48 = 48;
 
-class UIConstants {
+/// horizontal padding constants
+const EdgeInsets s4HorizontalPadding = const EdgeInsets.symmetric(horizontal: s4);
+const EdgeInsets s8HorizontalPadding = const EdgeInsets.symmetric(horizontal: s8);
+const EdgeInsets s16HorizontalPadding = const EdgeInsets.symmetric(horizontal: s16);
+const EdgeInsets s24HorizontalPadding = const EdgeInsets.symmetric(horizontal: s24);
+const EdgeInsets s32HorizontalPadding = const EdgeInsets.symmetric(horizontal: s32);
 
-  static const double extraSmall = 4;
-  static const double small = 8;
-  static const double medium = 16;
-  static const double large = 24;
-  static const double extraLarge = 32;
+/// vertical padding constants
+const EdgeInsets s4VerticalPadding = const EdgeInsets.symmetric(vertical: s4);
+const EdgeInsets s8VerticalPadding = const EdgeInsets.symmetric(vertical: s8);
+const EdgeInsets s16VerticalPadding = const EdgeInsets.symmetric(vertical: s16);
+const EdgeInsets s24VerticalPadding = const EdgeInsets.symmetric(vertical: s24);
+const EdgeInsets s32VerticalPadding = const EdgeInsets.symmetric(vertical: s32);
 
-  /// horizontal padding constants
-  static const EdgeInsets extraSmallHorizontalPadding = const EdgeInsets.symmetric(horizontal: extraSmall);
-  static const EdgeInsets smallHorizontalPadding = const EdgeInsets.symmetric(horizontal: small);
-  static const EdgeInsets mediumHorizontalPadding = const EdgeInsets.symmetric(horizontal: medium);
-  static const EdgeInsets largeHorizontalPadding = const EdgeInsets.symmetric(horizontal: large);
-  static const EdgeInsets extraLargeHorizontalPadding = const EdgeInsets.symmetric(horizontal: extraLarge);
-
-  /// vertical padding constants
-  static const EdgeInsets extraSmallVerticalPadding = const EdgeInsets.symmetric(vertical: extraSmall);
-  static const EdgeInsets smallVerticalPadding = const EdgeInsets.symmetric(vertical: small);
-  static const EdgeInsets mediumVerticalPadding = const EdgeInsets.symmetric(vertical: medium);
-  static const EdgeInsets largeVerticalPadding = const EdgeInsets.symmetric(vertical: large);
-  static const EdgeInsets extraLargeVerticalPadding = const EdgeInsets.symmetric(vertical: extraLarge);
-
-  /// all insets padding constants
-  static const EdgeInsets extraSmallPadding = const EdgeInsets.all(extraSmall);
-  static const EdgeInsets smallPadding = const EdgeInsets.all(small);
-  static const EdgeInsets mediumPadding = const EdgeInsets.all(medium);
-  static const EdgeInsets largePadding = const EdgeInsets.all(large);
-  static const EdgeInsets extraLargePadding = const EdgeInsets.all(extraLarge);
+/// all insets padding constants
+const EdgeInsets s4Padding = const EdgeInsets.all(s4);
+const EdgeInsets s8Padding = const EdgeInsets.all(s8);
+const EdgeInsets s16Padding = const EdgeInsets.all(s16);
+const EdgeInsets s24Padding = const EdgeInsets.all(s24);
+const EdgeInsets s32Padding = const EdgeInsets.all(s32);
 
 
-  /// height boxes
-  static const SizedBox extraSmallHeightBox = const SizedBox(height: extraSmall);
-  static const SizedBox smallHeightBox = const SizedBox(height: small);
-  static const SizedBox mediumHeightBox = const SizedBox(height: medium);
-  static const SizedBox largeHeightBox = const SizedBox(height: large);
-  static const SizedBox extraLargeHeightBox = const SizedBox(height: extraLarge);
+/// height boxes
+const SizedBox s4HeightBox = const SizedBox(height: s4);
+const SizedBox s8HeightBox = const SizedBox(height: s8);
+const SizedBox s16HeightBox = const SizedBox(height: s16);
+const SizedBox s24HeightBox = const SizedBox(height: s24);
+const SizedBox s32HeightBox = const SizedBox(height: s32);
 
-  /// width boxes
-  static const SizedBox extraSmallWidthBox = const SizedBox(width: extraSmall);
-  static const SizedBox smallWidthBox = const SizedBox(width: small);
-  static const SizedBox mediumWidthBox = const SizedBox(width: medium);
-  static const SizedBox largeWidthBox = const SizedBox(width: large);
-  static const SizedBox extraLargeWidthBox = const SizedBox(width: extraLarge);
-}
+/// width boxes
+const SizedBox s4WidthBox = const SizedBox(width: s4);
+const SizedBox s8WidthBox = const SizedBox(width: s8);
+const SizedBox s16WidthBox = const SizedBox(width: s16);
+const SizedBox s24WidthBox = const SizedBox(width: s24);
+const SizedBox s32WidthBox = const SizedBox(width: s32);
