@@ -109,6 +109,9 @@ extension MoyeWidgetExtension on Widget {
   Widget rotate(int quarterTurns) {
     return RotatedBox(quarterTurns: quarterTurns, child: this);
   }
+
+  // sliver extensions for widget
+  SliverToBoxAdapter get asSliver => SliverToBoxAdapter(child: this);
 }
 
 /// Extensions about aligning widgets on screen
