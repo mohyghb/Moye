@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 /// set of useful extensions that would lessen the development time and allow you to
 /// focus on making new features rather than implementing them
 
-
 /// This is used to setup the static values that are used within the package
 class MoyeConfig {
   /// a border radius that is round
@@ -13,9 +12,9 @@ class MoyeConfig {
 
   static void setConfig({BorderRadius? roundBorderRadius}) {
     // check to see if it's not null before setting it
-   roundBorderRadius?.let((it) {
-     MoyeConfig.roundBorderRadius = roundBorderRadius;
-   });
+    roundBorderRadius?.let((it) {
+      MoyeConfig.roundBorderRadius = roundBorderRadius;
+    });
   }
 }
 
@@ -25,10 +24,14 @@ extension MoyeNumberExtension on num {
   EdgeInsets get allInset {
     return EdgeInsets.all(this.toDouble());
   }
+
   /// returns an [EdgeInsets] that uses [num] as for horizontal insets
-  EdgeInsets get horizontalInset => EdgeInsets.symmetric(horizontal: this.toDouble());
+  EdgeInsets get horizontalInset =>
+      EdgeInsets.symmetric(horizontal: this.toDouble());
+
   /// returns an [EdgeInsets] that uses [num] as for vertical insets
-  EdgeInsets get verticalInset => EdgeInsets.symmetric(vertical: this.toDouble());
+  EdgeInsets get verticalInset =>
+      EdgeInsets.symmetric(vertical: this.toDouble());
   EdgeInsets get bottomInset => EdgeInsets.only(bottom: this.toDouble());
   EdgeInsets get rightInset => EdgeInsets.only(right: this.toDouble());
   EdgeInsets get leftInset => EdgeInsets.only(left: this.toDouble());
@@ -36,31 +39,28 @@ extension MoyeNumberExtension on num {
 
   /// creates a [Widget] that has this [num] as its height
   Widget get heightBox => SizedBox(height: this.toDouble());
+
   /// creates a [SizedBox] that has this [num] as its width
   Widget get widthBox => SizedBox(width: this.toDouble());
+
   /// creates an [Expanded] Widget with [SizedBox] as its child and has this [num] as it's flex
   Widget get expanded => Expanded(flex: this.toInt(), child: const SizedBox());
 }
 
 extension MoyeWidgetExtension on Widget {
-
   /// Makes this widget have round corners. You could also specify [border]
-  Widget withRoundCorners({
-    BoxBorder? border,
-    BorderRadius? borderRadius
-  }) {
+  Widget withRoundCorners({BoxBorder? border, BorderRadius? borderRadius}) {
     BorderRadius b = borderRadius ?? MoyeConfig.roundBorderRadius;
     Widget clipR = ClipRRect(
       borderRadius: b,
       child: this,
     );
-    return border == null ? clipR : Container(
-      child: clipR,
-      decoration: BoxDecoration(
-        border: border,
-        borderRadius: b
-      ),
-    );
+    return border == null
+        ? clipR
+        : Container(
+            child: clipR,
+            decoration: BoxDecoration(border: border, borderRadius: b),
+          );
   }
 
   /// Wrap this widget with a Expanded Widget
@@ -70,7 +70,7 @@ extension MoyeWidgetExtension on Widget {
 
   /// Wrap this widget with a Expanded Widget and specify a [flex] for it
   Expanded expandedWith(int flex) {
-    return Expanded(flex: flex,child: this);
+    return Expanded(flex: flex, child: this);
   }
 
   /// Wrap this widget with a padding for a given [EdgeInsetsGeometry]
@@ -85,7 +85,8 @@ extension MoyeWidgetExtension on Widget {
 
   /// Set the min height of this widget to [minHeight] by wrapping it inside a [ConstrainedBox]
   Widget withMinHeight(double minHeight) {
-    return ConstrainedBox(constraints:BoxConstraints(minHeight: minHeight), child: this);
+    return ConstrainedBox(
+        constraints: BoxConstraints(minHeight: minHeight), child: this);
   }
 
   /// Set the width of this widget set to [width] by wrapping it inside a [SizedBox]
@@ -95,7 +96,8 @@ extension MoyeWidgetExtension on Widget {
 
   /// Set the min width of this widget to [minWidth] by wrapping it inside a [ConstrainedBox]
   Widget withMinWidth(double minWidth) {
-    return ConstrainedBox(constraints:BoxConstraints(minWidth: minWidth), child: this);
+    return ConstrainedBox(
+        constraints: BoxConstraints(minWidth: minWidth), child: this);
   }
 
   /// Wrap this widget with a [ConstrainedBox], and set it's constraints to [constraints]
@@ -107,15 +109,22 @@ extension MoyeWidgetExtension on Widget {
   Widget rotate(int quarterTurns) {
     return RotatedBox(quarterTurns: quarterTurns, child: this);
   }
+
+  // sliver extensions for widget
+  SliverToBoxAdapter get asSliver => SliverToBoxAdapter(child: this);
 }
 
 /// Extensions about aligning widgets on screen
 extension MoyeAlignWidgetExtension on Widget {
-  Align align(AlignmentGeometry alignmentGeometry) => Align(alignment: alignmentGeometry, child: this);
+  Align align(AlignmentGeometry alignmentGeometry) =>
+      Align(alignment: alignmentGeometry, child: this);
   Align get alignCenter => Align(alignment: Alignment.center, child: this);
-  Align get alignBottom => Align(alignment: Alignment.bottomCenter, child: this);
-  Align get alignBottomLeft => Align(alignment: Alignment.bottomLeft, child: this);
-  Align get alignBottomRight => Align(alignment: Alignment.bottomRight, child: this);
+  Align get alignBottom =>
+      Align(alignment: Alignment.bottomCenter, child: this);
+  Align get alignBottomLeft =>
+      Align(alignment: Alignment.bottomLeft, child: this);
+  Align get alignBottomRight =>
+      Align(alignment: Alignment.bottomRight, child: this);
   Align get alignRight => Align(alignment: Alignment.centerRight, child: this);
   Align get alignTop => Align(alignment: Alignment.topCenter, child: this);
   Align get alignTopLeft => Align(alignment: Alignment.topLeft, child: this);
@@ -141,14 +150,18 @@ extension MoyeStateExtension on State {
   Color get canvasColor => Theme.of(context).canvasColor;
   Color get primaryColor => Theme.of(context).primaryColor;
   TextTheme get textTheme => Theme.of(context).textTheme;
-  TextStyle? get headline3Bold => textTheme.headline3?.copyWith(fontWeight: FontWeight.bold);
+  TextStyle? get headline3Bold =>
+      textTheme.headline3?.copyWith(fontWeight: FontWeight.bold);
   ThemeData get theme => Theme.of(context);
-  BoxBorder get defaultBorder => Border.all(color: textTheme.headline6?.color ?? primaryColor);
+  BoxBorder get defaultBorder =>
+      Border.all(color: textTheme.headline6?.color ?? primaryColor);
   BoxBorder get defaultCanvasColorBorder => Border.all(color: canvasColor);
   BoxBorder get whiteBorder => Border.all(color: Colors.white70);
   BoxBorder? get whiteBorderIfThemeDark => isThemeDark ? whiteBorder : null;
-  BoxBorder? get greyBorderIfThemeDark => isThemeDark ? Border.all(color: Colors.grey) : null;
+  BoxBorder? get greyBorderIfThemeDark =>
+      isThemeDark ? Border.all(color: Colors.grey) : null;
   Widget get empty => SizedBox();
+  ColorScheme get colorScheme => Theme.of(context).colorScheme;
 }
 
 /// An extension for a context
@@ -161,6 +174,7 @@ extension MoyeContextExtension on BuildContext {
   TextTheme get textTheme => Theme.of(this).textTheme;
   TargetPlatform get platform => Theme.of(this).platform;
   ThemeData get theme => Theme.of(this);
+  ColorScheme get colorScheme => Theme.of(this).colorScheme;
 }
 
 /// Extension for text styles to make everything easier
@@ -176,7 +190,6 @@ extension MoyeTextStyleExtension on TextStyle? {
 
 /// Extensions to make null safety easier to deal with
 extension NullSafetyExtension<T> on T {
-
   /// Kotlin style of coding
   /// This could be used on the Nullable objects to do some operation on it
   /// after we make sure that it's not null
