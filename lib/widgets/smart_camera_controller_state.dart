@@ -5,18 +5,19 @@ import 'package:flutter/material.dart';
 
 /// an abstract state that helps you to initialize and dispose the camera correctly
 /// you can listen or get updates for various callbacks from this abstract class as well
-abstract class SmartCameraControllerState<T extends StatefulWidget> extends State<T> with WidgetsBindingObserver {
-
+abstract class SmartCameraControllerState<T extends StatefulWidget>
+    extends State<T> with WidgetsBindingObserver {
   late List<CameraDescription> cameras;
   late CameraController cameraController;
-  StreamController<CameraController> cameraControllerStream = StreamController();
+  StreamController<CameraController> cameraControllerStream =
+      StreamController();
 
   CameraDescription get rearCamera => cameras[0];
+
   /// This is the time that we delay the initialization for camera controller
   /// This would make sure that things are loaded more smoothly. You can override it
   /// and change this value to your likings
   Duration get delayInitialization => Duration(milliseconds: 200);
-
 
   @override
   void initState() {
@@ -52,7 +53,6 @@ abstract class SmartCameraControllerState<T extends StatefulWidget> extends Stat
     super.dispose();
   }
 
-
   void initStateAsync() async {
     WidgetsBinding.instance?.addObserver(this);
     // Camera initialization
@@ -67,8 +67,6 @@ abstract class SmartCameraControllerState<T extends StatefulWidget> extends Stat
     cameraController = createCameraController();
 
     cameraController.initialize().then((_) async {
-      await startImageStream();
-
       onCameraControllerInitialized();
 
       // refresh the state so that camera preview is shown
@@ -78,19 +76,19 @@ abstract class SmartCameraControllerState<T extends StatefulWidget> extends Stat
 
   /// create and return a [CameraController]
   CameraController createCameraController() {
-    return CameraController(cameras[0], ResolutionPreset.high, enableAudio: false);
+    return CameraController(cameras[0], ResolutionPreset.high,
+        enableAudio: false);
   }
-
 
   /// Starts the image stream
   Future<void> startImageStream() async {
     return cameraController.startImageStream(onCameraImageAvailable);
   }
 
-  /// This is called once when the camera controller is initialized
-  void onCameraControllerInitialized(){}
+  /// This is called once when the camera controller is initialized.
+  /// You do not need to referesh the UI. You will hear a stream from [cameraControllerStream]
+  void onCameraControllerInitialized();
 
   /// This function receives the images from image stream of [cameraController]
   void onCameraImageAvailable(CameraImage cameraImage) {}
-
 }
