@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 /// an abstract state that helps you to initialize and dispose the camera correctly
 /// you can listen or get updates for various callbacks from this abstract class as well
-abstract class SmartCameraControllerState<T extends StatefulWidget>
+abstract class SmartCameraState<T extends StatefulWidget>
     extends State<T> with WidgetsBindingObserver {
   late List<CameraDescription> cameras;
   late CameraController cameraController;
