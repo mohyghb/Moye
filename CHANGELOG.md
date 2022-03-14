@@ -1,3 +1,10 @@
+## 0.0.4
+* Added sliver extensions - to convert easily between normal widgets to sliver widgets
+* Added pre-defined constants for padding, heightBox, and widthBox
+* Added smart camera state for handling init and dispose of camera controllers
+* Added validation helper for validating emails, names, and numbers
+* Added more getters for context extension
+
 ## 0.0.3
 * Added more extensions and utils
 * Breaking-Change - changed the location of various files in the package 
