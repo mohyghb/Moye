@@ -1,5 +1,6 @@
 import 'package:example/with_package/auth_view.dart';
 import 'package:flutter/material.dart';
+import 'package:moye/utils/input_validation.dart';
 void main() {
   // SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge).then((value) {
   //   runApp(MyApp());
