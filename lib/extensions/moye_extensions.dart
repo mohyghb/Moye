@@ -120,6 +120,15 @@ extension MoyeWidgetExtension on Widget {
       child: this,
     );
   }
+
+  /// Give a size to this widget
+  Widget withSize({double? width, double? height}) {
+    return SizedBox(
+      width: width,
+      height: height,
+      child: this
+    );
+  }
 }
 
 /// Extensions about aligning widgets on screen
