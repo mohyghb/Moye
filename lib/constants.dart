@@ -43,3 +43,7 @@ const SizedBox s8WidthBox = const SizedBox(width: s8);
 const SizedBox s16WidthBox = const SizedBox(width: s16);
 const SizedBox s24WidthBox = const SizedBox(width: s24);
 const SizedBox s32WidthBox = const SizedBox(width: s32);
+
+
+/// constant widgets
+const SizedBox empty = const SizedBox();

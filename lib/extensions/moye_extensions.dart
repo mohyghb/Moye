@@ -112,6 +112,14 @@ extension MoyeWidgetExtension on Widget {
 
   // sliver extensions for widget
   SliverToBoxAdapter get asSliver => SliverToBoxAdapter(child: this);
+
+  /// Detect taps on a widget easily
+  Widget onTap({VoidCallback? onTap}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: this,
+    );
+  }
 }
 
 /// Extensions about aligning widgets on screen
