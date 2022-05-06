@@ -1,3 +1,8 @@
+## 0.0.5
+* Added DateTime extensions (readable date time format)
+* Added more constants (compatible with slivers)
+* Added more widget extensions
+
 ## 0.0.4
 * Added sliver extensions - to convert easily between normal widgets to sliver widgets
 * Added pre-defined constants for padding, heightBox, and widthBox
