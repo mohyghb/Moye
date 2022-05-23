@@ -1,3 +1,7 @@
+## 0.0.6
+* Added String extensions (capitalize and title casing)
+* Updated the package in general for small improvements
+
 ## 0.0.5
 * Added DateTime extensions (readable date time format)
 * Added more constants (compatible with slivers)
