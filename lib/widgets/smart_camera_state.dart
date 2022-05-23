@@ -22,7 +22,7 @@ abstract class SmartCameraState<T extends StatefulWidget>
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance?.addPostFrameCallback((_) async {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
       // add a delay between initializing the camera view and the view being loaded
       await Future.delayed(delayInitialization);
       initStateAsync();
@@ -48,13 +48,13 @@ abstract class SmartCameraState<T extends StatefulWidget>
 
   @override
   void dispose() {
-    WidgetsBinding.instance?.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     cameraController.dispose();
     super.dispose();
   }
 
   void initStateAsync() async {
-    WidgetsBinding.instance?.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
     // Camera initialization
     initializeCamera();
   }
