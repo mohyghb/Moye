@@ -1,7 +1,11 @@
 import 'package:example/with_package/auth_view.dart';
 import 'package:flutter/material.dart';
+import 'package:moye/extensions/moye_extensions.dart';
+import 'package:moye/moye.dart';
 import 'package:moye/utils/input_validation.dart';
+import 'package:moye/widgets/LinearGradientProgressBar.dart';
 import 'package:moye/widgets/overlay_glow.dart';
+
 void main() {
   // SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge).then((value) {
   //   runApp(MyApp());
@@ -14,9 +18,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primaryColor: Colors.grey,
-      ),
+      themeMode: ThemeMode.dark,
+      darkTheme: ThemeData(
+          brightness: Brightness.dark,
+          useMaterial3: true,
+          colorSchemeSeed: Colors.blue.shade900),
       home: MyHomePage(),
       debugShowCheckedModeBanner: false,
     );
@@ -31,15 +37,29 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   void initState() {
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: AuthView().withHeaderOverlayGlow(context: context),
+      body: Center(
+        child: LinearGradientProgressBar(
+          value: 0.8,
+          borderRadius: BorderRadius.circular(100),
+          enableGlow: true,
+          gradient: LinearGradient(
+            colors: [
+              context.colorScheme.primary,
+              context.colorScheme.primary.withOpacity(0.7),
+              context.colorScheme.onPrimaryContainer.withOpacity(0.5),
+              context.colorScheme.secondaryContainer
+            ],
+          ),
+        ).withPadding(s16HorizontalPadding),
+      ),
     );
   }
 }
