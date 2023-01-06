@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+
+@Deprecated('This feature will not be supported anymore starting next release')
 /// A utils class which aims to make it easier to create [Container] and [AnimatedContainer]
 class Containers {
   static Widget build({

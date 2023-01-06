@@ -2,8 +2,7 @@ import 'package:example/with_package/auth_view.dart';
 import 'package:flutter/material.dart';
 import 'package:moye/extensions/moye_extensions.dart';
 import 'package:moye/moye.dart';
-import 'package:moye/utils/input_validation.dart';
-import 'package:moye/widgets/LinearGradientProgressBar.dart';
+import 'package:moye/widgets/linear_gradient_progress_bar.dart';
 import 'package:moye/widgets/overlay_glow.dart';
 
 void main() {

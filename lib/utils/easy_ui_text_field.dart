@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// abstract helper that helps us build new text fields easily
+@Deprecated('This feature will not be supported anymore')
 class TextFields {
   static TextFormField build({
     TextEditingController? controller,
