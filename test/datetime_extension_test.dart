@@ -1,10 +1,8 @@
 
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:moye/moye.dart';
 
 void main() {
-
   DateTime dt = DateTime(2022, 1, 7, 14, 26);
   test('Year month day', () {
     expect('2022,01,07', dt.getYearMonthDay());
@@ -12,6 +10,7 @@ void main() {
 
   test('Month Day Year', () {
     expect('January 7, 2022', dt.getMonthDayYear());
+    expect('Jan 7, 2022', dt.getMonthDayYear(shortMonthName: true));
   });
 
   test('Day month year', () {

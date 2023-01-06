@@ -1,5 +1,7 @@
 import 'dart:collection';
 
+import 'package:flutter/material.dart';
+
 const Map<int, String> months = <int, String>{
   DateTime.january : 'January',
   DateTime.february : 'February',
@@ -33,8 +35,9 @@ extension DateTimeExtension on DateTime {
   }
 
   /// November 3, 2022
-  String getMonthDayYear() {
-    return '${months[this.month]} ${this.day}, ${this.year}';
+  String getMonthDayYear({bool shortMonthName = false}) {
+    String? month = months[this.month];
+    return '${shortMonthName ? month?.substring(0,3) : month} ${this.day}, ${this.year}';
   }
 
   /// 02, 01 , 2022 (dd, mm, yyyy)
@@ -44,8 +47,7 @@ extension DateTimeExtension on DateTime {
 
   /// 19:02 or 7:02 pm depending on [is24Hours]
   String getTime({bool is24Hours = false}) {
-    return '${is24Hours ? this.hour : this.hour > 12 ? this.hour - 12 : this.hour}:${this.minute}'
-        '${is24Hours ? '' : this.hour >= 12 ? ' pm' : ' am'}';
+    return TimeOfDay.fromDateTime(this).getTime(is24Hours: is24Hours);
   }
 
   /// Fri 18th or Friday 18th
@@ -85,4 +87,17 @@ extension DateTimeExtension on DateTime {
     return '$value$suffix';
   }
 
+  /// returns the number of days in the month of this [DateTime]
+  int get daysInMonth => DateTime(year, month + 1, 0).day;
+
+  /// returns this [DateTime] without the time information
+  DateTime get onlyYearMonthDay => DateTime(year, month, day);
+}
+
+extension TimeOfDayExtension on TimeOfDay {
+  /// 19:02 or 7:02 pm depending on [is24Hours]
+  String getTime({bool is24Hours = false}) {
+    return '${is24Hours ? this.hour : this.hour > 12 ? this.hour - 12 : this.hour}:${this.minute}'
+        '${is24Hours ? '' : this.hour >= 12 ? ' pm' : ' am'}';
+  }
 }
