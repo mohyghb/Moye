@@ -32,9 +32,13 @@ extension MoyeNumberExtension on num {
   /// returns an [EdgeInsets] that uses [num] as for vertical insets
   EdgeInsets get verticalInset =>
       EdgeInsets.symmetric(vertical: this.toDouble());
+
   EdgeInsets get bottomInset => EdgeInsets.only(bottom: this.toDouble());
+
   EdgeInsets get rightInset => EdgeInsets.only(right: this.toDouble());
+
   EdgeInsets get leftInset => EdgeInsets.only(left: this.toDouble());
+
   EdgeInsets get topInset => EdgeInsets.only(top: this.toDouble());
 
   /// creates a [Widget] that has this [num] as its height
@@ -78,6 +82,11 @@ extension MoyeWidgetExtension on Widget {
     return Padding(padding: padding, child: this);
   }
 
+  /// Wrap this widget with a sliver padding for a given [EdgeInsetsGeometry]
+  Widget withSliverPadding(EdgeInsetsGeometry padding) {
+    return SliverPadding(padding: padding, sliver: this);
+  }
+
   /// Set the height of this widget set to [height] by wrapping it inside a [SizedBox]
   Widget withHeight(double? height) {
     return SizedBox(height: height, child: this);
@@ -110,7 +119,7 @@ extension MoyeWidgetExtension on Widget {
     return RotatedBox(quarterTurns: quarterTurns, child: this);
   }
 
-  // sliver extensions for widget
+  /// sliver extensions for widget (converts a widget to sliver)
   SliverToBoxAdapter get asSliver => SliverToBoxAdapter(child: this);
 
   /// Detect taps on a widget easily
@@ -123,11 +132,7 @@ extension MoyeWidgetExtension on Widget {
 
   /// Give a size to this widget
   Widget withSize({double? width, double? height}) {
-    return SizedBox(
-      width: width,
-      height: height,
-      child: this
-    );
+    return SizedBox(width: width, height: height, child: this);
   }
 }
 
@@ -135,63 +140,101 @@ extension MoyeWidgetExtension on Widget {
 extension MoyeAlignWidgetExtension on Widget {
   Align align(AlignmentGeometry alignmentGeometry) =>
       Align(alignment: alignmentGeometry, child: this);
+
   Align get alignCenter => Align(alignment: Alignment.center, child: this);
+
   Align get alignBottom =>
       Align(alignment: Alignment.bottomCenter, child: this);
+
   Align get alignBottomLeft =>
       Align(alignment: Alignment.bottomLeft, child: this);
+
   Align get alignBottomRight =>
       Align(alignment: Alignment.bottomRight, child: this);
+
   Align get alignRight => Align(alignment: Alignment.centerRight, child: this);
+
   Align get alignTop => Align(alignment: Alignment.topCenter, child: this);
+
   Align get alignTopLeft => Align(alignment: Alignment.topLeft, child: this);
+
   Align get alignTopRight => Align(alignment: Alignment.topRight, child: this);
+
   Align get alignLeft => Align(alignment: Alignment.centerLeft, child: this);
 }
 
 /// Extension about fitting widgets
 extension MoyeFitWidgetExtension on Widget {
   Widget get fit => FittedBox(child: this);
+
   Widget get fitWidth => FittedBox(fit: BoxFit.fitWidth, child: this);
+
   Widget get fitHeight => FittedBox(fit: BoxFit.fitHeight, child: this);
+
   Widget get fitCover => FittedBox(fit: BoxFit.cover, child: this);
+
   Widget get fitFill => FittedBox(fit: BoxFit.fill, child: this);
+
   Widget get fitScaleDown => FittedBox(fit: BoxFit.scaleDown, child: this);
 }
 
 /// An extension to access different variables of a state more easily
 extension MoyeStateExtension on State {
   double get screenWidth => MediaQuery.of(context).size.width;
+
   double get screenHeight => MediaQuery.of(context).size.height;
+
   bool get isThemeDark => Theme.of(context).brightness == Brightness.dark;
+
   Color get canvasColor => Theme.of(context).canvasColor;
+
   Color get primaryColor => Theme.of(context).primaryColor;
+
   TextTheme get textTheme => Theme.of(context).textTheme;
+
   TextStyle? get headline3Bold =>
       textTheme.headline3?.copyWith(fontWeight: FontWeight.bold);
+
   ThemeData get theme => Theme.of(context);
+
   BoxBorder get defaultBorder =>
       Border.all(color: textTheme.headline6?.color ?? primaryColor);
+
   BoxBorder get defaultCanvasColorBorder => Border.all(color: canvasColor);
+
   BoxBorder get whiteBorder => Border.all(color: Colors.white70);
+
   BoxBorder? get whiteBorderIfThemeDark => isThemeDark ? whiteBorder : null;
+
   BoxBorder? get greyBorderIfThemeDark =>
       isThemeDark ? Border.all(color: Colors.grey) : null;
+
   Widget get empty => SizedBox();
+
   ColorScheme get colorScheme => Theme.of(context).colorScheme;
 }
 
 /// An extension for a context
 extension MoyeContextExtension on BuildContext {
   double get screenWidth => MediaQuery.of(this).size.width;
+
   double get screenHeight => MediaQuery.of(this).size.height;
+
   bool get isThemeDark => Theme.of(this).brightness == Brightness.dark;
+
   Color get canvasColor => Theme.of(this).canvasColor;
+
   Color get primaryColor => Theme.of(this).primaryColor;
+
   TextTheme get textTheme => Theme.of(this).textTheme;
+
   TargetPlatform get platform => Theme.of(this).platform;
+
   ThemeData get theme => Theme.of(this);
+
   ColorScheme get colorScheme => Theme.of(this).colorScheme;
+
+  Brightness get brightness => Theme.of(this).brightness;
 }
 
 /// Extension for text styles to make everything easier
@@ -205,16 +248,19 @@ extension MoyeTextStyleExtension on TextStyle? {
   }
 }
 
+typedef LetInvokableFunction<R, T> = R Function(T it);
+typedef AlsoInvokableFunction<T> = Function(T it);
+
 /// Extensions to make null safety easier to deal with
 extension NullSafetyExtension<T> on T {
   /// Kotlin style of coding
   /// This could be used on the Nullable objects to do some operation on it
   /// after we make sure that it's not null
-  R let<R>(R Function(T) f) {
+  R let<R>(LetInvokableFunction<R, T> f) {
     return f(this);
   }
 
-  T also(Function(T) f) {
+  T also(AlsoInvokableFunction<T> f) {
     f(this);
     return this;
   }
