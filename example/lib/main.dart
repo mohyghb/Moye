@@ -45,19 +45,39 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: LinearGradientProgressBar(
-          value: 0.8,
-          borderRadius: BorderRadius.circular(100),
-          enableGlow: true,
-          gradient: LinearGradient(
-            colors: [
-              context.colorScheme.primary,
-              context.colorScheme.primary.withOpacity(0.7),
-              context.colorScheme.onPrimaryContainer.withOpacity(0.5),
-              context.colorScheme.secondaryContainer
-            ],
-          ),
-        ).withPadding(s16HorizontalPadding),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            LinearGradientProgressBar(
+              value: 0.8,
+              borderRadius: BorderRadius.circular(100),
+              enableGlow: true,
+              gradient: LinearGradient(
+                colors: [
+                  context.colorScheme.primary,
+                  context.colorScheme.primary.withOpacity(0.7),
+                  context.colorScheme.onPrimaryContainer.withOpacity(0.5),
+                  context.colorScheme.secondaryContainer
+                ],
+              ),
+            ).withPadding(s16HorizontalPadding),
+            s16HeightBox,
+            ElevatedButton(
+                onPressed: () {
+                  BottomSheetUtils.showBottomSheet(
+                    context: context,
+                    borderRadius: BorderRadius.circular(14),
+                    child: Column(
+                      children: [
+                        BottomSheetHandle(),
+                        Placeholder().withPadding(s24Padding),
+                      ],
+                    ),
+                  );
+                },
+                child: Text('Bottom sheet test'))
+          ],
+        ),
       ),
     );
   }
