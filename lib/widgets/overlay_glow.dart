@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:moye/extensions.dart';
-import 'package:moye/utils/easy_ui_container.dart';
 
 // Shows a glow on top of a given widget
 class OverlayGlowWidget extends StatelessWidget {
@@ -30,7 +29,8 @@ extension OverlayGlowExtension on Widget {
   }
 
   OverlayGlowWidget withHeaderOverlayGlow({required BuildContext context}) {
-    return OverlayGlowWidget(child: this, glows: [OverlayGlows.getHeaderGlow(context)]);
+    return OverlayGlowWidget(
+        child: this, glows: [OverlayGlows.getHeaderGlow(context)]);
   }
 }
 
@@ -41,7 +41,10 @@ class OverlayGlow {
   const OverlayGlow({required this.boxShadow, required this.rect});
 
   Widget buildGlow() {
-    return Containers.buildAnimated(boxShadow: [boxShadow]);
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
+      decoration: BoxDecoration(boxShadow: [boxShadow]),
+    );
   }
 }
 

@@ -2,7 +2,6 @@ import 'package:example/demo_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:moye/extensions/moye_extensions.dart';
-import 'package:moye/utils/easy_ui_container.dart';
 
 class AuthView extends StatefulWidget {
   @override
@@ -30,13 +29,6 @@ class AuthViewState extends State<AuthView> {
     return Stack(
       children: [
         Positioned.fill(child: Image.network(DemoUtils.IMAGE_URLS[0]).fitCover),
-        Containers.build(
-            gradient: LinearGradient(
-                colors: [Colors.black, Colors.black54, Colors.transparent, Colors.black],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter
-            )
-        ),
         SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
