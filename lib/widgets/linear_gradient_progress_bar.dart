@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:moye/moye.dart';
+import 'package:moye/extensions/moye_extensions.dart';
 
 // a progress bar that can have gradient colors and box shadows
 // with animation when value changes
