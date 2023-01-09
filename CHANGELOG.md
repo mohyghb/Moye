@@ -1,3 +1,14 @@
+## 1.0.0
+* Introduced Sliver Padding
+* Short names for DateTime readable human formats
+* Added readable human formats for TimeOfDay
+* Added BottomSheet Utils
+* Added LinearGradientProgressIndicator
+* Added OverlayGlow to add glow to views
+* Added ProgressButton
+* Minor refactors
+* Deprecated Containers and TextFields util classes
+
 ## 0.0.6
 * Added String extensions (capitalize and title casing)
 * Updated the package in general for small improvements
