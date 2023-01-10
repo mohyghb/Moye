@@ -1,3 +1,6 @@
+## 1.0.1
+* HotFix for some constants
+
 ## 1.0.0
 * Introduced Sliver Padding
 * Short names for DateTime readable human formats
