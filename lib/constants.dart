@@ -28,6 +28,8 @@ const EdgeInsets s32VerticalPadding = const EdgeInsets.symmetric(vertical: s32);
 /// symmetric padding constants
 const EdgeInsets s4Vertical8Horizontal = const EdgeInsets.symmetric(vertical: s4, horizontal: s8);
 const EdgeInsets s8Vertical16Horizontal = const EdgeInsets.symmetric(vertical: s8, horizontal: s16);
+const EdgeInsets s8Vertical24Horizontal = const EdgeInsets.symmetric(vertical: s8, horizontal: s24);
+const EdgeInsets s12Vertical24Horizontal = const EdgeInsets.symmetric(vertical: s12, horizontal: s24);
 
 /// all insets padding constants
 const EdgeInsets s4Padding = const EdgeInsets.all(s4);
@@ -59,7 +61,7 @@ const SizedBox s32WidthBox = const SizedBox(width: s32);
 /// height boxes
 const SliverToBoxAdapter s4HeightBoxSliver = const SliverToBoxAdapter(child: s4HeightBox);
 const SliverToBoxAdapter s8HeightBoxSliver = const SliverToBoxAdapter(child: s8HeightBox);
-const SliverToBoxAdapter s12HeightBoxSliver = const SliverToBoxAdapter(child: s8HeightBox);
+const SliverToBoxAdapter s12HeightBoxSliver = const SliverToBoxAdapter(child: s12HeightBox);
 const SliverToBoxAdapter s16HeightBoxSliver = const SliverToBoxAdapter(child: s16HeightBox);
 const SliverToBoxAdapter s24HeightBoxSliver = const SliverToBoxAdapter(child: s24HeightBox);
 const SliverToBoxAdapter s32HeightBoxSliver = const SliverToBoxAdapter(child: s32HeightBox);
@@ -67,7 +69,7 @@ const SliverToBoxAdapter s32HeightBoxSliver = const SliverToBoxAdapter(child: s3
 /// width boxes
 const SliverToBoxAdapter s4WidthBoxSliver = const SliverToBoxAdapter(child: s4WidthBox);
 const SliverToBoxAdapter s8WidthBoxSliver = const SliverToBoxAdapter(child: s8WidthBox);
-const SliverToBoxAdapter s12WidthBoxSliver = const SliverToBoxAdapter(child: s8WidthBox);
+const SliverToBoxAdapter s12WidthBoxSliver = const SliverToBoxAdapter(child: s12WidthBox);
 const SliverToBoxAdapter s16WidthBoxSliver = const SliverToBoxAdapter(child: s16WidthBox);
 const SliverToBoxAdapter s24WidthBoxSliver = const SliverToBoxAdapter(child: s24WidthBox);
 const SliverToBoxAdapter s32WidthBoxSliver = const SliverToBoxAdapter(child: s32WidthBox);
