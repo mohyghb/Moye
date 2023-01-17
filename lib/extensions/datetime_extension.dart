@@ -1,32 +1,31 @@
 import 'package:flutter/material.dart';
 
 const Map<int, String> months = <int, String>{
-  DateTime.january : 'January',
-  DateTime.february : 'February',
-  DateTime.march : 'March',
-  DateTime.april : 'April',
-  DateTime.may : 'May',
-  DateTime.june : 'June',
-  DateTime.july : 'July',
-  DateTime.august : 'August',
-  DateTime.september : 'September',
-  DateTime.october : 'October',
-  DateTime.november : 'November',
-  DateTime.december : 'December',
+  DateTime.january: 'January',
+  DateTime.february: 'February',
+  DateTime.march: 'March',
+  DateTime.april: 'April',
+  DateTime.may: 'May',
+  DateTime.june: 'June',
+  DateTime.july: 'July',
+  DateTime.august: 'August',
+  DateTime.september: 'September',
+  DateTime.october: 'October',
+  DateTime.november: 'November',
+  DateTime.december: 'December',
 };
 
-const Map<int, String> weekdays = <int, String> {
-  DateTime.monday : 'Monday',
-  DateTime.tuesday : 'Tuesday',
-  DateTime.wednesday : 'Wednesday',
-  DateTime.thursday : 'Thursday',
-  DateTime.friday : 'Friday',
-  DateTime.saturday : 'Saturday',
-  DateTime.sunday : 'Sunday',
+const Map<int, String> weekdays = <int, String>{
+  DateTime.monday: 'Monday',
+  DateTime.tuesday: 'Tuesday',
+  DateTime.wednesday: 'Wednesday',
+  DateTime.thursday: 'Thursday',
+  DateTime.friday: 'Friday',
+  DateTime.saturday: 'Saturday',
+  DateTime.sunday: 'Sunday',
 };
 
-extension DateTimeExtension on DateTime {
-
+extension MoyeDateTimeExtension on DateTime {
   /// 2022, 02, 01 (YYYY,MM,DD)
   String getYearMonthDay({String splitter = ','}) {
     return '${this.year}$splitter${_getReadableValue(this.month)}$splitter${_getReadableValue(this.day)}';
@@ -35,7 +34,7 @@ extension DateTimeExtension on DateTime {
   /// November 3, 2022
   String getMonthDayYear({bool shortMonthName = false}) {
     String? month = months[this.month];
-    return '${shortMonthName ? month?.substring(0,3) : month} ${this.day}, ${this.year}';
+    return '${shortMonthName ? month?.substring(0, 3) : month} ${this.day}, ${this.year}';
   }
 
   /// 02, 01 , 2022 (dd, mm, yyyy)
@@ -49,7 +48,8 @@ extension DateTimeExtension on DateTime {
   }
 
   /// Fri 18th or Friday 18th
-  String getWeekDayDate({bool shortWeekDay = false, bool includeSuffix = false}) {
+  String getWeekDayDate(
+      {bool shortWeekDay = false, bool includeSuffix = false}) {
     String dayName = weekdays[this.weekday] ?? '';
     String date = includeSuffix ? _getValueWithSuffix(day) : '$day';
 
@@ -92,7 +92,7 @@ extension DateTimeExtension on DateTime {
   DateTime get onlyYearMonthDay => DateTime(year, month, day);
 }
 
-extension TimeOfDayExtension on TimeOfDay {
+extension MoyeTimeOfDayExtension on TimeOfDay {
   /// 19:02 or 7:02 pm depending on [is24Hours]
   String getTime({bool is24Hours = false}) {
     return '${is24Hours ? this.hour : this.hour > 12 ? this.hour - 12 : this.hour}:${this.minute}'

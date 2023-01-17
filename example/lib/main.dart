@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -58,6 +58,14 @@ class _MyHomePageState extends State<MyHomePage> {
             //     ],
             //   ),
             // ).withPadding(s16HorizontalPadding),
+            FadeContainer.bottom(
+              context: context,
+              child: ListView.builder(
+                itemBuilder: (context, index) => ListTile(
+                  title: Text('item $index'),
+                ),
+              ),
+            ).expanded,
             s32HeightBox,
             ElevatedButton(
               onPressed: () {
@@ -73,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
               child: Text('Bottom sheet test'),
-            ).withContainerGlow()
+            ).withGlowContainer()
           ],
         ),
       ),

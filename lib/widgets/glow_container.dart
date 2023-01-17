@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:moye/moye.dart';
 
 /// Adds an outer glow to the given widget
-class ContainerGlow extends StatelessWidget {
+class GlowContainer extends StatelessWidget {
   final Widget? child;
   final Color? color;
   final double blurRadius;
   final double spreadRadius;
 
-  const ContainerGlow({
+  const GlowContainer({
     Key? key,
     this.child,
     this.color,
@@ -35,12 +35,12 @@ class ContainerGlow extends StatelessWidget {
 }
 
 extension ContainerGlowExtension on Widget? {
-  Widget withContainerGlow({
+  Widget withGlowContainer({
     Color? color,
     double blurRadius = 30,
     double spreadRadius = 1,
   }) {
-    return ContainerGlow(
+    return GlowContainer(
       child: this,
       color: color,
       blurRadius: blurRadius,
