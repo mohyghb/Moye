@@ -28,5 +28,4 @@ void main() {
     expect('Friday 7th', dt.getWeekDayDate(shortWeekDay: false, includeSuffix: true));
     expect('Friday 7', dt.getWeekDayDate(shortWeekDay: false, includeSuffix: false));
   });
-
 }

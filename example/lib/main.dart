@@ -41,41 +41,50 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            LinearGradientProgressBar(
-              value: 0.8,
-              borderRadius: BorderRadius.circular(100),
-              enableGlow: true,
-              gradient: LinearGradient(
-                colors: [
-                  context.colorScheme.primary,
-                  context.colorScheme.primary.withOpacity(0.7),
-                  context.colorScheme.onPrimaryContainer.withOpacity(0.5),
-                  context.colorScheme.secondaryContainer
-                ],
+            // LinearGradientProgressBar(
+            //   value: 0.8,
+            //   borderRadius: BorderRadius.circular(100),
+            //   enableGlow: true,
+            //   gradient: LinearGradient(
+            //     colors: [
+            //       context.colorScheme.primary,
+            //       context.colorScheme.primary.withOpacity(0.7),
+            //       context.colorScheme.onPrimaryContainer.withOpacity(0.5),
+            //       context.colorScheme.secondaryContainer
+            //     ],
+            //   ),
+            // ).withPadding(s16HorizontalPadding),
+            FadeContainer.bottom(
+              context: context,
+              child: ListView.builder(
+                itemBuilder: (context, index) => ListTile(
+                  title: Text('item $index'),
+                ),
               ),
-            ).withPadding(s16HorizontalPadding),
-            s16HeightBox,
+            ).expanded,
+            s32HeightBox,
             ElevatedButton(
-                onPressed: () {
-                  BottomSheetUtils.showBottomSheet(
-                    context: context,
-                    borderRadius: BorderRadius.circular(14),
-                    child: Column(
-                      children: [
-                        BottomSheetHandle(),
-                        Placeholder().withPadding(s24Padding),
-                      ],
-                    ),
-                  );
-                },
-                child: Text('Bottom sheet test'))
+              onPressed: () {
+                BottomSheetUtils.showBottomSheet(
+                  context: context,
+                  borderRadius: BorderRadius.circular(14),
+                  child: Column(
+                    children: [
+                      BottomSheetHandle(),
+                      Placeholder().withPadding(s24Padding),
+                    ],
+                  ),
+                );
+              },
+              child: Text('Bottom sheet test'),
+            ).withGlowContainer()
           ],
         ),
-      ).withBackBlurImage(imageProvider: NetworkImage('https://cdn.mos.cms.futurecdn.net/LeBCZwWxJL9HcpTAu8pQVJ.jpg')),
+      ),
     );
   }
 }
