@@ -1,3 +1,8 @@
+## 1.1.0
+* Added FadeContainer
+* Added BackBlurImage
+* Added GlowContainer
+
 ## 1.0.1
 * HotFix for some constants
 
