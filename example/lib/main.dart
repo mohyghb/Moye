@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:moye/moye.dart';
-import 'package:moye/widgets/back_blur_image.dart';
 
 void main() {
   // SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge).then((value) {
