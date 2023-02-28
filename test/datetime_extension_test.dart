@@ -19,7 +19,7 @@ void main() {
 
   test('get time', () {
     expect('14:26', dt.getTime(is24Hours: true));
-    expect('2:26 pm', dt.getTime(is24Hours: false));
+    expect('02:26 pm', dt.getTime(is24Hours: false));
   });
 
   test('get week day date', () {
