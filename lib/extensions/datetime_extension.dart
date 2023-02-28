@@ -25,6 +25,12 @@ const Map<int, String> weekdays = <int, String>{
   DateTime.sunday: 'Sunday',
 };
 
+/// returns [value] if it's greater than 10, otherwise returns 01 if value is 1,
+/// 02 if value is 2, and so on...
+String _getReadableValue(int value) {
+  return value > 9 ? '$value' : '0$value';
+}
+
 extension MoyeDateTimeExtension on DateTime {
   /// 2022, 02, 01 (YYYY,MM,DD)
   String getYearMonthDay({String splitter = ','}) {
@@ -60,12 +66,6 @@ extension MoyeDateTimeExtension on DateTime {
     return '$dayName $date';
   }
 
-  /// returns [value] if it's greater than 10, otherwise returns 01 if value is 1,
-  /// 02 if value is 2, and so on...
-  String _getReadableValue(int value) {
-    return value > 9 ? '$value' : '0$value';
-  }
-
   /// returns [value] with the appropriate suffix
   /// e.g. 1st, 2nd, 3rd, 4th, 5th, ...
   String _getValueWithSuffix(int value) {
@@ -95,7 +95,18 @@ extension MoyeDateTimeExtension on DateTime {
 extension MoyeTimeOfDayExtension on TimeOfDay {
   /// 19:02 or 7:02 pm depending on [is24Hours]
   String getTime({bool is24Hours = false}) {
-    return '${is24Hours ? this.hour : this.hour > 12 ? this.hour - 12 : this.hour}:${this.minute}'
-        '${is24Hours ? '' : this.hour >= 12 ? ' pm' : ' am'}';
+    int hour = is24Hours
+        ? this.hour
+        : this.hour > 12
+            ? this.hour - 12
+            : this.hour;
+    String suffix = is24Hours
+        ? ''
+        : this.hour >= 12
+            ? ' pm'
+            : ' am';
+
+    return '${_getReadableValue(hour)}:${_getReadableValue(this.minute)}'
+        '$suffix';
   }
 }
