@@ -49,6 +49,7 @@ class FadeContainer extends StatelessWidget {
     required BuildContext context,
     required Widget child,
     Color? fadeColor,
+    double startFade = 0.97,
   }) {
     var overlayColor = fadeColor ?? context.colorScheme.background;
     return FadeContainer(
@@ -59,7 +60,12 @@ class FadeContainer extends StatelessWidget {
         Colors.transparent,
         overlayColor
       ],
-      stops: const [0, 0.025, 0.975, 1.0],
+      stops: [
+        0,
+        (1 - startFade),
+        startFade,
+        1.0,
+      ],
       shaderRect: (rect) => rect,
     );
   }
@@ -78,7 +84,7 @@ class FadeContainer extends StatelessWidget {
         overlayColor,
         Colors.transparent,
         Colors.transparent,
-        overlayColor
+        overlayColor,
       ],
       stops: const [0, 0.25, 0.75, 1.0],
       shaderRect: (rect) => rect,
@@ -89,19 +95,53 @@ class FadeContainer extends StatelessWidget {
     required BuildContext context,
     required Widget child,
     Color? fadeColor,
+    double startFade = 0.97,
   }) {
     Color overlayColor = fadeColor ?? context.colorScheme.surface;
     return FadeContainer(
       child: child,
-      fadeColors: [
-        Colors.transparent,
-        overlayColor
-      ],
-      stops: [
-        0.97,
-        1.0
-      ],
+      fadeColors: [Colors.transparent, overlayColor],
+      stops: [startFade, 1.0],
       shaderRect: (rect) => rect,
+    );
+  }
+}
+
+extension FadeContainerExtension on Widget {
+  Widget withTopAndBottomFade({
+    required BuildContext context,
+    Color? fadeColor,
+    double startFade = 0.97,
+  }) {
+    return FadeContainer.topAndBottom(
+      context: context,
+      child: this,
+      fadeColor: fadeColor,
+      startFade: startFade,
+    );
+  }
+
+  Widget withBottomFade({
+    required BuildContext context,
+    Color? fadeColor,
+    double startFade = 0.97,
+  }) {
+    return FadeContainer.bottom(
+      context: context,
+      child: this,
+      fadeColor: fadeColor,
+      startFade: startFade,
+    );
+  }
+
+  Widget withLeftAndRightFade({
+    required BuildContext context,
+    Color? fadeColor,
+  }) {
+    return FadeContainer.leftAndRight(
+      context: context,
+      child: this,
+      fadeColor: fadeColor,
     );
   }
 }
