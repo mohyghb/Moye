@@ -32,6 +32,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String image =
+      'http://www.nasa.gov/sites/default/files/thumbnails/image/web_first_images_release.png';
+
   @override
   void initState() {
     super.initState();
@@ -44,6 +47,24 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Card(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Image.network(
+                    image,
+                    height: 150,
+                  ),
+                  s16WidthBox,
+                  Text('Space Image')
+                      .withPadding(s16Padding)
+                      .withBackBlurImage(
+                          imageProvider: NetworkImage(image),
+                          imageColorBlendMode: BlendMode.darken)
+                      .expanded
+                ],
+              ),
+            ).withHeight(150)
             // LinearGradientProgressBar(
             //   value: 0.8,
             //   borderRadius: BorderRadius.circular(100),
@@ -57,30 +78,30 @@ class _MyHomePageState extends State<MyHomePage> {
             //     ],
             //   ),
             // ).withPadding(s16HorizontalPadding),
-            FadeContainer.bottom(
-              context: context,
-              child: ListView.builder(
-                itemBuilder: (context, index) => ListTile(
-                  title: Text('item $index'),
-                ),
-              ),
-            ).expanded,
-            s32HeightBox,
-            ElevatedButton(
-              onPressed: () {
-                BottomSheetUtils.showBottomSheet(
-                  context: context,
-                  borderRadius: BorderRadius.circular(14),
-                  child: Column(
-                    children: [
-                      BottomSheetHandle(),
-                      Placeholder().withPadding(s24Padding),
-                    ],
-                  ),
-                );
-              },
-              child: Text('Bottom sheet test'),
-            ).withGlowContainer()
+            // FadeContainer.bottom(
+            //   context: context,
+            //   child: ListView.builder(
+            //     itemBuilder: (context, index) => ListTile(
+            //       title: Text('item $index'),
+            //     ),
+            //   ),
+            // ).expanded,
+            // s32HeightBox,
+            // ElevatedButton(
+            //   onPressed: () {
+            //     BottomSheetUtils.showBottomSheet(
+            //       context: context,
+            //       borderRadius: BorderRadius.circular(14),
+            //       child: Column(
+            //         children: [
+            //           BottomSheetHandle(),
+            //           Placeholder().withPadding(s24Padding),
+            //         ],
+            //       ),
+            //     );
+            //   },
+            //   child: Text('Bottom sheet test'),
+            // ).withGlowContainer()
           ],
         ),
       ),
