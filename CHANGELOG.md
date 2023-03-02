@@ -1,3 +1,10 @@
+## 2.0.0
+* BREAKING CHANGE: removed the camera package from this package. You can utilize the stream_camera_state package instead.
+* Added extra functionality for FadeContainer
+* Added extra functionality for BackBlurImage
+* Added extension for FadeContainer
+* Fixed issue with time extension not following the correct readable formats
+
 ## 1.1.0
 * Added FadeContainer
 * Added BackBlurImage
