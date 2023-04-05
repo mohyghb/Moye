@@ -64,7 +64,18 @@ class _MyHomePageState extends State<MyHomePage> {
                       .expanded
                 ],
               ),
-            ).withHeight(150)
+            ).withHeight(150),
+            s16HeightBox,
+            ProgressButton(
+              type: ProgressButtonType.outlined,
+              // loadingType: ProgressButtonLoadingType.showInside,
+              // icon: Icon(Icons.start),
+              onPressed: () async {
+                await Future.delayed(Duration(seconds: 2));
+              },
+              child: Text('press here'),
+            ),
+
             // LinearGradientProgressBar(
             //   value: 0.8,
             //   borderRadius: BorderRadius.circular(100),
