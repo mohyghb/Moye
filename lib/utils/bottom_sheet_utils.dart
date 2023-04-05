@@ -1,16 +1,107 @@
 import 'package:flutter/material.dart';
 import 'package:moye/moye.dart';
 
+/// [controller] is only present if using the ScrollableBottomSheetType
+typedef BottomSheetChildBuilder = Widget Function(
+    BuildContext context, ScrollController? controller);
+
+abstract class BottomSheetConfig {
+  final bool isScrollControlled;
+  final bool enableDrag;
+  final BottomSheetChildBuilder builder;
+
+  const BottomSheetConfig({
+    required this.isScrollControlled,
+    required this.enableDrag,
+    required this.builder,
+  });
+
+  Widget build(BuildContext context);
+}
+
+class DefaultBottomSheetConfig extends BottomSheetConfig {
+  const DefaultBottomSheetConfig({
+    required BottomSheetChildBuilder builder,
+  }) : super(
+          isScrollControlled: false,
+          enableDrag: true,
+          builder: builder,
+        );
+
+  @override
+  Widget build(BuildContext context) {
+    return super.builder(context, null);
+  }
+}
+
+class WrapBottomSheetConfig extends BottomSheetConfig {
+  const WrapBottomSheetConfig({
+    required BottomSheetChildBuilder builder,
+  }) : super(
+          isScrollControlled: false,
+          enableDrag: true,
+          builder: builder,
+        );
+
+  @override
+  Widget build(BuildContext context) {
+    return Wrap(
+      children: [
+        super.builder(context, null),
+      ],
+    );
+  }
+}
+
+class ScrollableBottomSheetConfig extends BottomSheetConfig {
+
+  final double initialChildSize;
+  final double minChildSize;
+  final double maxChildSize;
+  final bool expand;
+  final bool snap;
+  final List<double>? snapSizes;
+  final DraggableScrollableController? controller;
+
+  const ScrollableBottomSheetConfig({
+    required BottomSheetChildBuilder builder,
+    this.initialChildSize = 0.5,
+    this.minChildSize = 0.25,
+    this.maxChildSize = 1.0,
+    this.expand = false,
+    this.snap = true,
+    this.snapSizes,
+    this.controller,
+  }) : super(
+          isScrollControlled: true,
+          enableDrag: true,
+          builder: builder,
+        );
+
+  @override
+  Widget build(BuildContext context) {
+    return DraggableScrollableSheet(
+      expand: expand,
+      snap: snap,
+      initialChildSize: initialChildSize,
+      minChildSize: minChildSize,
+      maxChildSize: maxChildSize,
+      snapSizes: snapSizes,
+      builder: (BuildContext context, ScrollController scrollController) {
+        return super.builder(context, scrollController);
+      },
+    );
+  }
+}
+
+
 
 /// make it easier to show rounded bottom sheets
 class BottomSheetUtils {
-
   static Future<T?> showBottomSheet<T>({
     required BuildContext context,
-    required Widget child,
+    required BottomSheetConfig config,
     Color? backgroundColor,
-    bool isScrollControlled = false,
-    bool wrap = true,
     BorderRadius borderRadius = BorderRadius.zero,
     double? elevation,
     ShapeBorder? shape,
@@ -19,15 +110,14 @@ class BottomSheetUtils {
     Color? barrierColor,
     bool useRootNavigator = false,
     bool isDismissible = true,
-    bool enableDrag = true,
     RouteSettings? routeSettings,
     AnimationController? transitionAnimationController,
     Offset? anchorPoint,
   }) {
     return showModalBottomSheet<T>(
       context: context,
-      enableDrag: enableDrag,
-      isScrollControlled: isScrollControlled,
+      enableDrag: config.enableDrag,
+      isScrollControlled: config.isScrollControlled,
       backgroundColor: backgroundColor ?? context.theme.cardColor,
       shape: RoundedRectangleBorder(borderRadius: borderRadius),
       elevation: elevation,
@@ -36,11 +126,7 @@ class BottomSheetUtils {
       isDismissible: isDismissible,
       transitionAnimationController: transitionAnimationController,
       anchorPoint: anchorPoint,
-      builder: (context) => wrap
-          ? Wrap(
-              children: [child],
-            )
-          : child,
+      builder: config.build,
     );
   }
 
