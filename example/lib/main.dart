@@ -64,7 +64,18 @@ class _MyHomePageState extends State<MyHomePage> {
                       .expanded
                 ],
               ),
-            ).withHeight(150)
+            ).withHeight(150),
+            s16HeightBox,
+            ProgressButton(
+              type: ProgressButtonType.outlined,
+              // loadingType: ProgressButtonLoadingType.showInside,
+              // icon: Icon(Icons.start),
+              onPressed: () async {
+                await Future.delayed(Duration(seconds: 2));
+              },
+              child: Text('press here'),
+            ),
+
             // LinearGradientProgressBar(
             //   value: 0.8,
             //   borderRadius: BorderRadius.circular(100),
@@ -87,21 +98,32 @@ class _MyHomePageState extends State<MyHomePage> {
             //   ),
             // ).expanded,
             // s32HeightBox,
-            // ElevatedButton(
-            //   onPressed: () {
-            //     BottomSheetUtils.showBottomSheet(
-            //       context: context,
-            //       borderRadius: BorderRadius.circular(14),
-            //       child: Column(
-            //         children: [
-            //           BottomSheetHandle(),
-            //           Placeholder().withPadding(s24Padding),
-            //         ],
-            //       ),
-            //     );
-            //   },
-            //   child: Text('Bottom sheet test'),
-            // ).withGlowContainer()
+            ElevatedButton(
+              onPressed: () {
+                BottomSheetUtils.showBottomSheet(
+                  context: context,
+                  borderRadius: BorderRadius.circular(14),
+                  config: ScrollableBottomSheetConfig(
+                    initialChildSize: 0.2,
+                    minChildSize: 0.2,
+                    maxChildSize: 0.8,
+                    builder: (context, controller) {
+                    return SingleChildScrollView(
+                      controller: controller,
+                      child: Column(
+                        children: [
+                          BottomSheetHandle().alignCenter,
+                          Text('Gekk', style: context.textTheme.titleLarge,),
+                          200.heightBox,
+                          // Placeholder().withPadding(s24Padding),
+                        ],
+                      ),
+                    );
+                  },)
+                );
+              },
+              child: Text('Bottom sheet test'),
+            ).withGlowContainer()
           ],
         ),
       ),

@@ -134,6 +134,14 @@ extension MoyeWidgetExtension on Widget {
   Widget withSize({double? width, double? height}) {
     return SizedBox(width: width, height: height, child: this);
   }
+
+  /// Show the widget with the given [aspectRatio]
+  Widget withAspectRatio({required double aspectRatio}) {
+    return AspectRatio(
+      aspectRatio: aspectRatio,
+      child: this,
+    );
+  }
 }
 
 /// Extensions about aligning widgets on screen
@@ -243,7 +251,7 @@ extension MoyeTextStyleExtension on TextStyle? {
   TextStyle? get bold => this?.copyWith(fontWeight: FontWeight.bold);
 
   /// set the color of this TextStyle to [color]
-  TextStyle? withColor(Color color) {
+  TextStyle? withColor(Color? color) {
     return this?.copyWith(color: color);
   }
 }

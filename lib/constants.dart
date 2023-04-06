@@ -77,3 +77,4 @@ const SliverToBoxAdapter s32WidthBoxSliver = const SliverToBoxAdapter(child: s32
 
 /// constant widgets
 const SizedBox empty = const SizedBox();
+const SliverToBoxAdapter emptySliver = const SliverToBoxAdapter();

@@ -28,9 +28,19 @@ extension OverlayGlowExtension on Widget {
     return OverlayGlowWidget(child: this, glows: glows);
   }
 
-  OverlayGlowWidget withHeaderOverlayGlow({required BuildContext context}) {
+  OverlayGlowWidget withHeaderOverlayGlow({
+    required BuildContext context,
+    Color? color,
+    Rect? rect,
+    double? blurRadius,
+    double height = 25,
+  }) {
     return OverlayGlowWidget(
-        child: this, glows: [OverlayGlows.getHeaderGlow(context)]);
+      child: this,
+      glows: [
+        OverlayGlows.getHeaderGlow(context, color: color, rect: rect, blurRadius: blurRadius, height: height),
+      ],
+    );
   }
 }
 
