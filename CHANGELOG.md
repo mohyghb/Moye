@@ -1,3 +1,8 @@
+## 2.1.0
+* Added more extensions
+* Added 3 different types of bottom sheet: default, wrap, and scrollable
+* Updated progress button to allow for icons and also whether to show the loading progress inside or replace the button
+
 ## 2.0.0
 * BREAKING CHANGE: removed the camera package from this package. You can utilize the stream_camera_state package instead.
 * Added extra functionality for FadeContainer
