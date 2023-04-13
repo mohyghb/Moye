@@ -1,3 +1,6 @@
+## 2.1.1
+* Hotfix - changed the bottom sheet config class fields to be adjustable
+
 ## 2.1.0
 * Added more extensions
 * Added 3 different types of bottom sheet: default, wrap, and scrollable
