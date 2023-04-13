@@ -21,12 +21,10 @@ abstract class BottomSheetConfig {
 
 class DefaultBottomSheetConfig extends BottomSheetConfig {
   const DefaultBottomSheetConfig({
-    required BottomSheetChildBuilder builder,
-  }) : super(
-          isScrollControlled: false,
-          enableDrag: true,
-          builder: builder,
-        );
+    required super.builder,
+    super.isScrollControlled = false,
+    super.enableDrag = true,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -36,12 +34,10 @@ class DefaultBottomSheetConfig extends BottomSheetConfig {
 
 class WrapBottomSheetConfig extends BottomSheetConfig {
   const WrapBottomSheetConfig({
-    required BottomSheetChildBuilder builder,
-  }) : super(
-          isScrollControlled: false,
-          enableDrag: true,
-          builder: builder,
-        );
+    required super.builder,
+    super.isScrollControlled = false,
+    super.enableDrag = true,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +50,6 @@ class WrapBottomSheetConfig extends BottomSheetConfig {
 }
 
 class ScrollableBottomSheetConfig extends BottomSheetConfig {
-
   final double initialChildSize;
   final double minChildSize;
   final double maxChildSize;
@@ -64,7 +59,7 @@ class ScrollableBottomSheetConfig extends BottomSheetConfig {
   final DraggableScrollableController? controller;
 
   const ScrollableBottomSheetConfig({
-    required BottomSheetChildBuilder builder,
+    required super.builder,
     this.initialChildSize = 0.5,
     this.minChildSize = 0.25,
     this.maxChildSize = 1.0,
@@ -72,11 +67,9 @@ class ScrollableBottomSheetConfig extends BottomSheetConfig {
     this.snap = true,
     this.snapSizes,
     this.controller,
-  }) : super(
-          isScrollControlled: true,
-          enableDrag: true,
-          builder: builder,
-        );
+    super.isScrollControlled = true,
+    super.enableDrag = true,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -93,8 +86,6 @@ class ScrollableBottomSheetConfig extends BottomSheetConfig {
     );
   }
 }
-
-
 
 /// make it easier to show rounded bottom sheets
 class BottomSheetUtils {
@@ -129,5 +120,4 @@ class BottomSheetUtils {
       builder: config.build,
     );
   }
-
 }
