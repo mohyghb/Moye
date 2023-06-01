@@ -103,18 +103,33 @@ class _MyHomePageState extends State<MyHomePage> {
                 BottomSheetUtils.showBottomSheet(
                   context: context,
                   borderRadius: BorderRadius.circular(14),
-                  config: ScrollableBottomSheetConfig(
-                    initialChildSize: 0.2,
-                    minChildSize: 0.2,
-                    maxChildSize: 0.8,
+                  config: DefaultBottomSheetConfig(
                     builder: (context, controller) {
                     return SingleChildScrollView(
-                      controller: controller,
                       child: Column(
                         children: [
                           BottomSheetHandle().alignCenter,
                           Text('Gekk', style: context.textTheme.titleLarge,),
-                          200.heightBox,
+                          TextField(
+                            decoration: InputDecoration(
+                              labelText: 'Enter something'
+                            ),
+                          ),
+                          TextField(
+                            decoration: InputDecoration(
+                                labelText: 'Enter something'
+                            ),
+                          ),
+                          TextField(
+                            decoration: InputDecoration(
+                                labelText: 'Enter something'
+                            ),
+                          ),
+                          TextField(
+                            decoration: InputDecoration(
+                                labelText: 'Enter something'
+                            ),
+                          ),
                           // Placeholder().withPadding(s24Padding),
                         ],
                       ),

@@ -243,6 +243,8 @@ extension MoyeContextExtension on BuildContext {
   ColorScheme get colorScheme => Theme.of(this).colorScheme;
 
   Brightness get brightness => Theme.of(this).brightness;
+
+  MediaQueryData get mediaQuery => MediaQuery.of(this);
 }
 
 /// Extension for text styles to make everything easier

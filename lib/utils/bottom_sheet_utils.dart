@@ -10,25 +10,37 @@ abstract class BottomSheetConfig {
   final bool enableDrag;
   final BottomSheetChildBuilder builder;
 
+  // adjusts the bottom padding of bottom sheet to the keyboard opening
+  final bool adjustToKeyboardChanges;
+
   const BottomSheetConfig({
     required this.isScrollControlled,
     required this.enableDrag,
     required this.builder,
+    this.adjustToKeyboardChanges = true,
   });
 
   Widget build(BuildContext context);
 }
+
 
 class DefaultBottomSheetConfig extends BottomSheetConfig {
   const DefaultBottomSheetConfig({
     required super.builder,
     super.isScrollControlled = false,
     super.enableDrag = true,
+    // need to wrap the builder with a scroll controller, otherwise the adjustments
+    // for keyboard changes wouldn't work
+    super.adjustToKeyboardChanges,
   });
 
   @override
   Widget build(BuildContext context) {
-    return super.builder(context, null);
+    return super.builder(context, null).withPadding(
+          super.adjustToKeyboardChanges
+              ? context.mediaQuery.viewInsets
+              : EdgeInsets.zero,
+        );
   }
 }
 
@@ -37,6 +49,7 @@ class WrapBottomSheetConfig extends BottomSheetConfig {
     required super.builder,
     super.isScrollControlled = false,
     super.enableDrag = true,
+    super.adjustToKeyboardChanges,
   });
 
   @override
@@ -45,7 +58,9 @@ class WrapBottomSheetConfig extends BottomSheetConfig {
       children: [
         super.builder(context, null),
       ],
-    );
+    ).withPadding(super.adjustToKeyboardChanges
+        ? context.mediaQuery.viewInsets
+        : EdgeInsets.zero);
   }
 }
 
@@ -69,6 +84,9 @@ class ScrollableBottomSheetConfig extends BottomSheetConfig {
     this.controller,
     super.isScrollControlled = true,
     super.enableDrag = true,
+    // need to wrap the builder with a scroll controller, otherwise the adjustments
+    // for keyboard changes wouldn't work
+    super.adjustToKeyboardChanges,
   });
 
   @override
@@ -83,7 +101,9 @@ class ScrollableBottomSheetConfig extends BottomSheetConfig {
       builder: (BuildContext context, ScrollController scrollController) {
         return super.builder(context, scrollController);
       },
-    );
+    ).withPadding(super.adjustToKeyboardChanges
+        ? context.mediaQuery.viewInsets
+        : EdgeInsets.zero);
   }
 }
 

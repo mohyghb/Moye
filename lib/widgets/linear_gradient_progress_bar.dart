@@ -13,6 +13,7 @@ class LinearGradientProgressBar extends StatelessWidget {
   final BorderRadius borderRadius;
   final double minHeight;
   final bool enableGlow;
+  final BoxBorder? border;
 
   // value is a percentage (e.g. 0.4 means fill out 40% of the linear progress bar)
   final double value;
@@ -29,6 +30,7 @@ class LinearGradientProgressBar extends StatelessWidget {
     this.spreadRadius = 3,
     this.glowColor,
     this.enableGlow = true,
+    this.border,
   }) : super(key: key);
 
   @override
@@ -44,6 +46,7 @@ class LinearGradientProgressBar extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: borderRadius,
         color: backgroundColor ?? context.colorScheme.background,
+        border: border,
         boxShadow: !enableGlow ? [] : [
           BoxShadow(
             color: glowColor ?? gradient.colors.first,
