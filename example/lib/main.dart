@@ -47,24 +47,11 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Card(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Image.network(
-                    image,
-                    height: 150,
-                  ),
-                  s16WidthBox,
-                  Text('Space Image')
-                      .withPadding(s16Padding)
-                      .withBackBlurImage(
-                          imageProvider: NetworkImage(image),
-                          imageColorBlendMode: BlendMode.darken)
-                      .expanded
-                ],
-              ),
-            ).withHeight(150),
+            AutoLayout.recommended(
+              smallBuilder: (context, constraints) => Text('small'),
+              mediumBuilder: (context, constraints) => Text('medium'),
+              largeBuilder: (context, constraints) => Text('large'),
+            ),
             s16HeightBox,
             ProgressButton(
               type: ProgressButtonType.outlined,
@@ -101,41 +88,40 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
               onPressed: () {
                 BottomSheetUtils.showBottomSheet(
-                  context: context,
-                  borderRadius: BorderRadius.circular(14),
-                  config: DefaultBottomSheetConfig(
-                    builder: (context, controller) {
-                    return SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          BottomSheetHandle().alignCenter,
-                          Text('Gekk', style: context.textTheme.titleLarge,),
-                          TextField(
-                            decoration: InputDecoration(
-                              labelText: 'Enter something'
-                            ),
+                    context: context,
+                    borderRadius: BorderRadius.circular(14),
+                    config: DefaultBottomSheetConfig(
+                      builder: (context, controller) {
+                        return SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              BottomSheetHandle().alignCenter,
+                              Text(
+                                'Gekk',
+                                style: context.textTheme.titleLarge,
+                              ),
+                              TextField(
+                                decoration: InputDecoration(
+                                    labelText: 'Enter something'),
+                              ),
+                              TextField(
+                                decoration: InputDecoration(
+                                    labelText: 'Enter something'),
+                              ),
+                              TextField(
+                                decoration: InputDecoration(
+                                    labelText: 'Enter something'),
+                              ),
+                              TextField(
+                                decoration: InputDecoration(
+                                    labelText: 'Enter something'),
+                              ),
+                              // Placeholder().withPadding(s24Padding),
+                            ],
                           ),
-                          TextField(
-                            decoration: InputDecoration(
-                                labelText: 'Enter something'
-                            ),
-                          ),
-                          TextField(
-                            decoration: InputDecoration(
-                                labelText: 'Enter something'
-                            ),
-                          ),
-                          TextField(
-                            decoration: InputDecoration(
-                                labelText: 'Enter something'
-                            ),
-                          ),
-                          // Placeholder().withPadding(s24Padding),
-                        ],
-                      ),
-                    );
-                  },)
-                );
+                        );
+                      },
+                    ));
               },
               child: Text('Bottom sheet test'),
             ).withGlowContainer()
