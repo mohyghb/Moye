@@ -12,6 +12,7 @@ class FadeContainer extends StatelessWidget {
   final AlignmentGeometry begin, end;
   final List<double>? stops;
   final Rect Function(Rect) shaderRect;
+  final BlendMode blendMode;
 
   const FadeContainer({
     Key? key,
@@ -22,6 +23,7 @@ class FadeContainer extends StatelessWidget {
     this.begin = Alignment.topCenter,
     this.end = Alignment.bottomCenter,
     this.stops,
+    this.blendMode = BlendMode.srcATop,
   }) : super(key: key);
 
   @override
@@ -39,7 +41,7 @@ class FadeContainer extends StatelessWidget {
           stops: stops,
         ).createShader(shaderRect(rect));
       },
-      blendMode: BlendMode.srcATop,
+      blendMode: blendMode,
       child: child,
     );
   }
@@ -75,7 +77,7 @@ class FadeContainer extends StatelessWidget {
     required Widget child,
     Color? fadeColor,
   }) {
-    var overlayColor = fadeColor ?? context.colorScheme.surface;
+    var overlayColor = fadeColor ?? context.colorScheme.background;
     return FadeContainer(
       child: child,
       begin: Alignment.centerLeft,
@@ -97,11 +99,31 @@ class FadeContainer extends StatelessWidget {
     Color? fadeColor,
     double startFade = 0.97,
   }) {
-    Color overlayColor = fadeColor ?? context.colorScheme.surface;
+    Color overlayColor = fadeColor ?? context.colorScheme.background;
     return FadeContainer(
       child: child,
       fadeColors: [Colors.transparent, overlayColor],
       stops: [startFade, 1.0],
+      shaderRect: (rect) => rect,
+    );
+  }
+
+  static FadeContainer top({
+    required BuildContext context,
+    required Widget child,
+    Color? fadeColor,
+    double stopFade = 0.03,
+  }) {
+    Color overlayColor = fadeColor ?? context.colorScheme.background;
+    return FadeContainer(
+      child: child,
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      fadeColors: [
+        overlayColor,
+        Colors.transparent,
+      ],
+      stops: [0, stopFade],
       shaderRect: (rect) => rect,
     );
   }
