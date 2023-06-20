@@ -1,3 +1,9 @@
+## 2.2.0
+* AutoLayout - fixed a minor bug
+* FadeContainer - now supports top fade
+* Added border capability for linear gradient progress bar
+* Made bottom sheet compatible with keyboard opening
+
 ## 2.1.1
 * Hotfix - changed the bottom sheet config class fields to be adjustable
 

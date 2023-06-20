@@ -47,7 +47,7 @@ class DefaultBottomSheetConfig extends BottomSheetConfig {
 class WrapBottomSheetConfig extends BottomSheetConfig {
   const WrapBottomSheetConfig({
     required super.builder,
-    super.isScrollControlled = false,
+    super.isScrollControlled = true,
     super.enableDrag = true,
     super.adjustToKeyboardChanges,
   });
