@@ -200,13 +200,10 @@ extension MoyeStateExtension on State {
 
   TextTheme get textTheme => Theme.of(context).textTheme;
 
-  TextStyle? get headline3Bold =>
-      textTheme.headline3?.copyWith(fontWeight: FontWeight.bold);
-
   ThemeData get theme => Theme.of(context);
 
   BoxBorder get defaultBorder =>
-      Border.all(color: textTheme.headline6?.color ?? primaryColor);
+      Border.all(color: context.colorScheme.onBackground);
 
   BoxBorder get defaultCanvasColorBorder => Border.all(color: canvasColor);
 

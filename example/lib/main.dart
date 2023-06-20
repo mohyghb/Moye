@@ -63,6 +63,19 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Text('press here'),
             ),
 
+            FadeContainer.top(
+              context: context,
+              // fadeColor: Colors.red,
+              child: ListView.builder(
+                itemCount: 20,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text('$index'),
+                  );
+                },
+              ),
+            ).expanded,
+
             // LinearGradientProgressBar(
             //   value: 0.8,
             //   borderRadius: BorderRadius.circular(100),
