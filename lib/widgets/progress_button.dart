@@ -4,7 +4,14 @@ import 'package:moye/moye.dart';
 /// A button that shows circular progress bar or a custom widget
 /// when pressed until the future task is complete
 
-enum ProgressButtonType { outlined, elevated, text, icon }
+enum ProgressButtonType {
+  outlined,
+  elevated,
+  text,
+  icon,
+  filled,
+  filledTonal,
+}
 
 enum ProgressButtonLoadingType {
   // show the loading widget inside the button where the icon is
@@ -75,23 +82,30 @@ class _ProgressButtonWithIconChild extends StatelessWidget {
 class _ProgressButtonState extends State<ProgressButton> {
   bool _isLoading = false;
 
+  // use [context.mounted] to make sure the widget was not dismissed before or after the
+  // widget.onPressed function
   void onPressed() async {
-    setState(() {
-      _isLoading = true;
-    });
+    if (context.mounted) {
+      setState(() {
+        _isLoading = true;
+      });
+    }
 
     await widget.onPressed?.call();
 
-    setState(() {
-      _isLoading = false;
-    });
+    if (context.mounted) {
+      setState(() {
+        _isLoading = false;
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     final loadingWidget = widget.loadingWidget ??
         const Center(child: CircularProgressIndicator.adaptive());
-    var onPressedFunction = _isLoading ? null : widget.onPressed?.let((it) => onPressed);
+    var onPressedFunction =
+        _isLoading ? null : widget.onPressed?.let((it) => onPressed);
     var child = widget.child;
 
     if (_isLoading && widget.loadingType == ProgressButtonLoadingType.replace) {
@@ -100,7 +114,9 @@ class _ProgressButtonState extends State<ProgressButton> {
       return loadingWidget;
     }
 
-    if (widget.icon != null || (_isLoading && widget.loadingType == ProgressButtonLoadingType.showInside)) {
+    if (widget.icon != null ||
+        (_isLoading &&
+            widget.loadingType == ProgressButtonLoadingType.showInside)) {
       child = _ProgressButtonWithIconChild(
         label: widget.child,
         icon: _isLoading ? loadingWidget : widget.icon ?? empty,
@@ -131,6 +147,18 @@ class _ProgressButtonState extends State<ProgressButton> {
         return IconButton(
           onPressed: onPressedFunction,
           icon: widget.child,
+        );
+      case ProgressButtonType.filled:
+        return FilledButton(
+          style: widget.style,
+          onPressed: onPressedFunction,
+          child: widget.child,
+        );
+      case ProgressButtonType.filledTonal:
+        return FilledButton.tonal(
+          style: widget.style,
+          onPressed: onPressedFunction,
+          child: widget.child,
         );
     }
   }
