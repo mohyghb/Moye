@@ -1,3 +1,7 @@
+## 2.2.1
+* Updated Progress button to support filled and filled tonal buttons
+* Fixed an issue where popping the context using progress button would cause an error
+
 ## 2.2.0
 * AutoLayout - fixed a minor bug
 * FadeContainer - now supports top fade
