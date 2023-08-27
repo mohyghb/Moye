@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       themeMode: ThemeMode.dark,
       darkTheme: ThemeData(brightness: Brightness.dark, useMaterial3: true, colorSchemeSeed: Colors.blue.shade900),
+      theme: ThemeData(brightness: Brightness.light, useMaterial3: true, colorSchemeSeed: Colors.blue.shade900),
       home: MyHomePage(),
       debugShowCheckedModeBanner: false,
     );
@@ -33,6 +34,17 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          ProgressButton(
+            onPressed: () async {
+              await Future.delayed(const Duration(seconds: 3));
+            },
+            child: const Text('Done'),
+            icon: Icon(Icons.done),
+          ).withPadding(s16HorizontalPadding)
+        ],
+      ),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -53,6 +65,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
+            s32HeightBox,
+            ProgressButton(
+              onPressed: () async {
+                await Future.delayed(const Duration(seconds: 1));
+              },
+              child: const Text('Send Message'),
+              icon: Icon(Icons.send),
+            )
           ],
         ).withPadding(s16Padding),
       ),
