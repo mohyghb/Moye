@@ -26,12 +26,10 @@ extension MoyeNumberExtension on num {
   }
 
   /// returns an [EdgeInsets] that uses [num] as for horizontal insets
-  EdgeInsets get horizontalInset =>
-      EdgeInsets.symmetric(horizontal: this.toDouble());
+  EdgeInsets get horizontalInset => EdgeInsets.symmetric(horizontal: this.toDouble());
 
   /// returns an [EdgeInsets] that uses [num] as for vertical insets
-  EdgeInsets get verticalInset =>
-      EdgeInsets.symmetric(vertical: this.toDouble());
+  EdgeInsets get verticalInset => EdgeInsets.symmetric(vertical: this.toDouble());
 
   EdgeInsets get bottomInset => EdgeInsets.only(bottom: this.toDouble());
 
@@ -94,8 +92,7 @@ extension MoyeWidgetExtension on Widget {
 
   /// Set the min height of this widget to [minHeight] by wrapping it inside a [ConstrainedBox]
   Widget withMinHeight(double minHeight) {
-    return ConstrainedBox(
-        constraints: BoxConstraints(minHeight: minHeight), child: this);
+    return ConstrainedBox(constraints: BoxConstraints(minHeight: minHeight), child: this);
   }
 
   /// Set the width of this widget set to [width] by wrapping it inside a [SizedBox]
@@ -105,8 +102,7 @@ extension MoyeWidgetExtension on Widget {
 
   /// Set the min width of this widget to [minWidth] by wrapping it inside a [ConstrainedBox]
   Widget withMinWidth(double minWidth) {
-    return ConstrainedBox(
-        constraints: BoxConstraints(minWidth: minWidth), child: this);
+    return ConstrainedBox(constraints: BoxConstraints(minWidth: minWidth), child: this);
   }
 
   /// Wrap this widget with a [ConstrainedBox], and set it's constraints to [constraints]
@@ -142,23 +138,28 @@ extension MoyeWidgetExtension on Widget {
       child: this,
     );
   }
+
+  /// Wraps this inside a [Flexible]
+  Widget withFlexible({int flex = 1, FlexFit fit = FlexFit.loose}) {
+    return Flexible(
+      flex: flex,
+      fit: fit,
+      child: this,
+    );
+  }
 }
 
 /// Extensions about aligning widgets on screen
 extension MoyeAlignWidgetExtension on Widget {
-  Align align(AlignmentGeometry alignmentGeometry) =>
-      Align(alignment: alignmentGeometry, child: this);
+  Align align(AlignmentGeometry alignmentGeometry) => Align(alignment: alignmentGeometry, child: this);
 
   Align get alignCenter => Align(alignment: Alignment.center, child: this);
 
-  Align get alignBottom =>
-      Align(alignment: Alignment.bottomCenter, child: this);
+  Align get alignBottom => Align(alignment: Alignment.bottomCenter, child: this);
 
-  Align get alignBottomLeft =>
-      Align(alignment: Alignment.bottomLeft, child: this);
+  Align get alignBottomLeft => Align(alignment: Alignment.bottomLeft, child: this);
 
-  Align get alignBottomRight =>
-      Align(alignment: Alignment.bottomRight, child: this);
+  Align get alignBottomRight => Align(alignment: Alignment.bottomRight, child: this);
 
   Align get alignRight => Align(alignment: Alignment.centerRight, child: this);
 
@@ -202,8 +203,7 @@ extension MoyeStateExtension on State {
 
   ThemeData get theme => Theme.of(context);
 
-  BoxBorder get defaultBorder =>
-      Border.all(color: context.colorScheme.onBackground);
+  BoxBorder get defaultBorder => Border.all(color: context.colorScheme.onBackground);
 
   BoxBorder get defaultCanvasColorBorder => Border.all(color: canvasColor);
 
@@ -211,8 +211,7 @@ extension MoyeStateExtension on State {
 
   BoxBorder? get whiteBorderIfThemeDark => isThemeDark ? whiteBorder : null;
 
-  BoxBorder? get greyBorderIfThemeDark =>
-      isThemeDark ? Border.all(color: Colors.grey) : null;
+  BoxBorder? get greyBorderIfThemeDark => isThemeDark ? Border.all(color: Colors.grey) : null;
 
   Widget get empty => SizedBox();
 

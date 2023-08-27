@@ -69,7 +69,7 @@ class _ProgressButtonWithIconChild extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        icon,
+        icon.fitScaleDown,
         SizedBox(
           width: gap ?? 8,
         ),
@@ -146,19 +146,19 @@ class _ProgressButtonState extends State<ProgressButton> {
       case ProgressButtonType.icon:
         return IconButton(
           onPressed: onPressedFunction,
-          icon: widget.child,
+          icon: child,
         );
       case ProgressButtonType.filled:
         return FilledButton(
           style: widget.style,
           onPressed: onPressedFunction,
-          child: widget.child,
+          child: child,
         );
       case ProgressButtonType.filledTonal:
         return FilledButton.tonal(
           style: widget.style,
           onPressed: onPressedFunction,
-          child: widget.child,
+          child: child,
         );
     }
   }

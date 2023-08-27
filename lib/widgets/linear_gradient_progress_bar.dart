@@ -14,9 +14,10 @@ class LinearGradientProgressBar extends StatelessWidget {
   final double minHeight;
   final bool enableGlow;
   final BoxBorder? border;
-
   // value is a percentage (e.g. 0.4 means fill out 40% of the linear progress bar)
   final double value;
+  // this child is placed inside the linear gradient progress bar
+  final Widget? child;
 
   const LinearGradientProgressBar({
     Key? key,
@@ -31,6 +32,7 @@ class LinearGradientProgressBar extends StatelessWidget {
     this.glowColor,
     this.enableGlow = true,
     this.border,
+    this.child,
   }) : super(key: key);
 
   @override
@@ -61,6 +63,7 @@ class LinearGradientProgressBar extends StatelessWidget {
             width: constraints.maxWidth * value,
             duration: animationDuration,
             decoration: BoxDecoration(gradient: gradient),
+            child: child,
           ).alignLeft;
         },
       ),
