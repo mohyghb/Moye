@@ -1,3 +1,9 @@
+## 2.3.0
+* Introduced GradientOverlay - apply gradient overlay on top of your widgets
+* Fixed progress button bugs
+* Now LinearGradientProgressBar accepts a child
+* Added more extensions
+
 ## 2.2.1
 * Updated Progress button to support filled and filled tonal buttons
 * Fixed an issue where popping the context using progress button would cause an error
