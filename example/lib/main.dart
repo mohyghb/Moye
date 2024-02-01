@@ -1,3 +1,4 @@
+import 'package:example/bottom_sheet_view_example.dart';
 import 'package:flutter/material.dart';
 import 'package:moye/moye.dart';
 import 'package:moye/widgets/gradient_overlay.dart';
@@ -72,6 +73,20 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: const Text('Send Message'),
               icon: Icon(Icons.send),
+            ),
+            s16HeightBox,
+            ElevatedButton(
+              onPressed: () {
+                BottomSheetUtils.showBottomSheet(
+                  context: context,
+                  config: WrapBottomSheetConfig(
+                    builder: (context, controller) {
+                      return BottomSheetViewExample();
+                    },
+                  ),
+                );
+              },
+              child: const Text('Show Bottom Sheet'),
             )
           ],
         ).withPadding(s16Padding),
