@@ -81,11 +81,13 @@ class _ProgressButtonWithIconChild extends StatelessWidget {
 
 class _ProgressButtonState extends State<ProgressButton> {
   bool _isLoading = false;
+  // required so that we don't get [context] when the element has been destroyed
+  bool _isDisposed = false;
 
   // use [context.mounted] to make sure the widget was not dismissed before or after the
   // widget.onPressed function
   void onPressed() async {
-    if (context.mounted) {
+    if (!_isDisposed && context.mounted) {
       setState(() {
         _isLoading = true;
       });
@@ -93,11 +95,17 @@ class _ProgressButtonState extends State<ProgressButton> {
 
     await widget.onPressed?.call();
 
-    if (context.mounted) {
+    if (!_isDisposed && context.mounted) {
       setState(() {
         _isLoading = false;
       });
     }
+  }
+
+  @override
+  void dispose() {
+    _isDisposed = true;
+    super.dispose();
   }
 
   @override
