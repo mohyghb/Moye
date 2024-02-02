@@ -187,42 +187,12 @@ extension MoyeFitWidgetExtension on Widget {
   Widget get fitScaleDown => FittedBox(fit: BoxFit.scaleDown, child: this);
 }
 
-/// An extension to access different variables of a state more easily
-extension MoyeStateExtension on State {
-  double get screenWidth => MediaQuery.of(context).size.width;
-
-  double get screenHeight => MediaQuery.of(context).size.height;
-
-  bool get isThemeDark => Theme.of(context).brightness == Brightness.dark;
-
-  Color get canvasColor => Theme.of(context).canvasColor;
-
-  Color get primaryColor => Theme.of(context).primaryColor;
-
-  TextTheme get textTheme => Theme.of(context).textTheme;
-
-  ThemeData get theme => Theme.of(context);
-
-  BoxBorder get defaultBorder => Border.all(color: context.colorScheme.onBackground);
-
-  BoxBorder get defaultCanvasColorBorder => Border.all(color: canvasColor);
-
-  BoxBorder get whiteBorder => Border.all(color: Colors.white70);
-
-  BoxBorder? get whiteBorderIfThemeDark => isThemeDark ? whiteBorder : null;
-
-  BoxBorder? get greyBorderIfThemeDark => isThemeDark ? Border.all(color: Colors.grey) : null;
-
-  Widget get empty => SizedBox();
-
-  ColorScheme get colorScheme => Theme.of(context).colorScheme;
-}
-
 /// An extension for a context
 extension MoyeContextExtension on BuildContext {
-  double get screenWidth => MediaQuery.of(this).size.width;
-
-  double get screenHeight => MediaQuery.of(this).size.height;
+  // Size extensions
+  double get screenWidth => MediaQuery.sizeOf(this).width;
+  double get screenHeight => MediaQuery.sizeOf(this).height;
+  Size get screenSize => MediaQuery.sizeOf(this);
 
   bool get isThemeDark => Theme.of(this).brightness == Brightness.dark;
 
