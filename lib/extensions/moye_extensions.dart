@@ -2,22 +2,6 @@ library easy_ui;
 
 import 'package:flutter/material.dart';
 
-/// set of useful extensions that would lessen the development time and allow you to
-/// focus on making new features rather than implementing them
-
-/// This is used to setup the static values that are used within the package
-class MoyeConfig {
-  /// a border radius that is round
-  static BorderRadius roundBorderRadius = BorderRadius.all(Radius.circular(14));
-
-  static void setConfig({BorderRadius? roundBorderRadius}) {
-    // check to see if it's not null before setting it
-    roundBorderRadius?.let((it) {
-      MoyeConfig.roundBorderRadius = roundBorderRadius;
-    });
-  }
-}
-
 /// extension of the [num] to contain more useful helper methods and getters
 extension MoyeNumberExtension on num {
   /// returns an [EdgeInsets] that includes this number as a padding for all sides
@@ -52,16 +36,15 @@ extension MoyeNumberExtension on num {
 extension MoyeWidgetExtension on Widget {
   /// Makes this widget have round corners. You could also specify [border]
   Widget withRoundCorners({BoxBorder? border, BorderRadius? borderRadius}) {
-    BorderRadius b = borderRadius ?? MoyeConfig.roundBorderRadius;
     Widget clipR = ClipRRect(
-      borderRadius: b,
+      borderRadius: borderRadius ?? BorderRadius.zero,
       child: this,
     );
     return border == null
         ? clipR
         : Container(
             child: clipR,
-            decoration: BoxDecoration(border: border, borderRadius: b),
+            decoration: BoxDecoration(border: border, borderRadius: borderRadius),
           );
   }
 
@@ -191,14 +174,14 @@ extension MoyeFitWidgetExtension on Widget {
 extension MoyeContextExtension on BuildContext {
   // Size extensions
   double get screenWidth => MediaQuery.sizeOf(this).width;
+
   double get screenHeight => MediaQuery.sizeOf(this).height;
+
   Size get screenSize => MediaQuery.sizeOf(this);
 
   bool get isThemeDark => Theme.of(this).brightness == Brightness.dark;
 
   Color get canvasColor => Theme.of(this).canvasColor;
-
-  Color get primaryColor => Theme.of(this).primaryColor;
 
   TextTheme get textTheme => Theme.of(this).textTheme;
 

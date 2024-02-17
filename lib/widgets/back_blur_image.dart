@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 /// Shows the [child] on top of the blurred version of the image provider provided
+/// Useful to make the background of a widget blurry.
 class BackBlurImage extends StatelessWidget {
   final double? sigmaX;
   final double? sigmaY;
@@ -58,6 +59,7 @@ class BackBlurImage extends StatelessWidget {
   }
 }
 
+/// Extensions to make introducing back blur easier by just calling it on any widget
 extension BackBlurImageExtension on Widget {
   Widget withBackBlurImage({
     required ImageProvider imageProvider,

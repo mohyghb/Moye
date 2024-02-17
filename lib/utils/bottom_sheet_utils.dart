@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:moye/moye.dart';
 
 /// [controller] is only present if using the ScrollableBottomSheetType
-typedef BottomSheetChildBuilder = Widget Function(
-    BuildContext context, ScrollController? controller);
+typedef BottomSheetChildBuilder = Widget Function(BuildContext context, ScrollController? controller);
 
 abstract class BottomSheetConfig {
   final bool isScrollControlled;
@@ -23,7 +22,7 @@ abstract class BottomSheetConfig {
   Widget build(BuildContext context);
 }
 
-
+/// The default bottom sheet config. It doesn't wrap the content, neither does it make them scrollable.
 class DefaultBottomSheetConfig extends BottomSheetConfig {
   const DefaultBottomSheetConfig({
     required super.builder,
@@ -37,13 +36,12 @@ class DefaultBottomSheetConfig extends BottomSheetConfig {
   @override
   Widget build(BuildContext context) {
     return super.builder(context, null).withPadding(
-          super.adjustToKeyboardChanges
-              ? context.mediaQuery.viewInsets
-              : EdgeInsets.zero,
+          super.adjustToKeyboardChanges ? context.mediaQuery.viewInsets : EdgeInsets.zero,
         );
   }
 }
 
+/// A bottom sheet config that wraps its content based on tall the content is
 class WrapBottomSheetConfig extends BottomSheetConfig {
   const WrapBottomSheetConfig({
     required super.builder,
@@ -58,12 +56,13 @@ class WrapBottomSheetConfig extends BottomSheetConfig {
       children: [
         super.builder(context, null),
       ],
-    ).withPadding(super.adjustToKeyboardChanges
-        ? context.mediaQuery.viewInsets
-        : EdgeInsets.zero);
+    ).withPadding(super.adjustToKeyboardChanges ? context.mediaQuery.viewInsets : EdgeInsets.zero);
   }
 }
 
+/// A bottom sheet config that has a scrollable content inside of it
+/// The builder provides a [ScrollController] that can be used to be attached to the content of the bottom sheet for better
+/// scrolling behaviour
 class ScrollableBottomSheetConfig extends BottomSheetConfig {
   final double initialChildSize;
   final double minChildSize;
@@ -101,13 +100,11 @@ class ScrollableBottomSheetConfig extends BottomSheetConfig {
       builder: (BuildContext context, ScrollController scrollController) {
         return super.builder(context, scrollController);
       },
-    ).withPadding(super.adjustToKeyboardChanges
-        ? context.mediaQuery.viewInsets
-        : EdgeInsets.zero);
+    ).withPadding(super.adjustToKeyboardChanges ? context.mediaQuery.viewInsets : EdgeInsets.zero);
   }
 }
 
-/// make it easier to show rounded bottom sheets
+/// Utilities to show bottom sheets effortlessly
 class BottomSheetUtils {
   static Future<T?> showBottomSheet<T>({
     required BuildContext context,

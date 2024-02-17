@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:moye/moye.dart';
 
+/// Default bottom sheet handle provided to make it easier in showing a handle for the bottom sheet
 class BottomSheetHandle extends StatelessWidget {
   final double width;
   final double height;

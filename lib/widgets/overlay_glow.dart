@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:moye/extensions/moye_extensions.dart';
 
-// Shows a glow on top of a given widget
+/// Shows a glow on top of a given widget
 class OverlayGlowWidget extends StatelessWidget {
   final Widget child;
   final List<OverlayGlow> glows;
