@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:moye/extensions/moye_extensions.dart';
 
-// a progress bar that can have gradient colors and box shadows
-// with animation when value changes
+/// a progress bar that can have gradient colors and box shadows
+/// with animation when value changes
 class LinearGradientProgressBar extends StatelessWidget {
   final Duration animationDuration;
   final Gradient gradient;

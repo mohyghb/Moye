@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:moye/moye.dart';
 
 /// Adds an outer glow to the given widget
+/// This is a similar glow that changing the elevation of a widget provides you, however, you can customize the outer glow
+/// by [color], [blurRadius], and [spreadRadius]
 class GlowContainer extends StatelessWidget {
   final Widget? child;
   final Color? color;

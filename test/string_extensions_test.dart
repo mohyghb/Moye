@@ -2,8 +2,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:moye/extensions/string_extensions.dart';
 
 void main() {
-
-
   test('capitalize', () {
     expect('Hello', 'hello'.capitalize);
     expect('H', 'h'.capitalize);
@@ -17,6 +15,4 @@ void main() {
     expect('H', 'h'.titleCase);
     expect('', ''.titleCase);
   });
-
-
 }

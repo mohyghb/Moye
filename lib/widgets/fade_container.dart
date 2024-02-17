@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:moye/moye.dart';
 
-/// applies a fade, defaults to bottom fade can specify other parameters to create
+/// Applies a fade to a widget, defaults to bottom fade can specify other parameters to create
 /// top, left and right, and other specific fades
+/// Good for when trying to make the scrollable content fade out at the bottom of your screen or list view
 class FadeContainer extends StatelessWidget {
   final Widget child;
   final Color? fadeColor;
 
   // optional for further customization
+  // if this param is provided, fadeColor will be ignored and we will sue these fade colors
   final List<Color>? fadeColors;
+  // Which angle the fade should start and end
   final AlignmentGeometry begin, end;
   final List<double>? stops;
   final Rect Function(Rect) shaderRect;

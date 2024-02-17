@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// Overlays a gradient on top of a child, like a [Text]
+/// Useful to create gradient texts, images, and components instead of having them with a static color
 class GradientOverlay extends StatelessWidget {
   final Gradient gradient;
   final Widget child;

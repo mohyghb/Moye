@@ -39,7 +39,6 @@ const EdgeInsets s16Padding = const EdgeInsets.all(s16);
 const EdgeInsets s24Padding = const EdgeInsets.all(s24);
 const EdgeInsets s32Padding = const EdgeInsets.all(s32);
 
-
 /// height boxes
 const SizedBox s4HeightBox = const SizedBox(height: s4);
 const SizedBox s8HeightBox = const SizedBox(height: s8);
@@ -55,7 +54,6 @@ const SizedBox s12WidthBox = const SizedBox(width: s12);
 const SizedBox s16WidthBox = const SizedBox(width: s16);
 const SizedBox s24WidthBox = const SizedBox(width: s24);
 const SizedBox s32WidthBox = const SizedBox(width: s32);
-
 
 // sliver versions
 /// height boxes
@@ -73,7 +71,6 @@ const SliverToBoxAdapter s12WidthBoxSliver = const SliverToBoxAdapter(child: s12
 const SliverToBoxAdapter s16WidthBoxSliver = const SliverToBoxAdapter(child: s16WidthBox);
 const SliverToBoxAdapter s24WidthBoxSliver = const SliverToBoxAdapter(child: s24WidthBox);
 const SliverToBoxAdapter s32WidthBoxSliver = const SliverToBoxAdapter(child: s32WidthBox);
-
 
 /// constant widgets
 const SizedBox empty = const SizedBox();

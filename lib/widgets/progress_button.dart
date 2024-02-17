@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:moye/moye.dart';
 
 /// A button that shows circular progress bar or a custom widget
-/// when pressed until the future task is complete
+/// when pressed until the future task is complete. Useful to make show a feedback to the user when they press a button
+/// and debounce any incoming press events while the task is in progress.
 
+// Different types of progress button types, following the Material 3 design system
 enum ProgressButtonType {
   outlined,
   elevated,
