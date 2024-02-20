@@ -14,6 +14,9 @@ extension MoyeStringExtensions on String {
     if (this.isEmpty) {
       return '';
     }
-    return replaceAll(RegExp(' +'), ' ').split(' ').map((str) => str.capitalize).join(' ');
+    return replaceAll(RegExp(' +'), ' ')
+        .split(' ')
+        .map((str) => str.capitalize)
+        .join(' ');
   }
 }

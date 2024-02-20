@@ -11,7 +11,6 @@ class BottomSheetViewExample extends StatelessWidget {
           ProgressButton(
             onPressed: () async {
               await Future.delayed(const Duration(seconds: 3));
-
             },
             child: const Text('Done'),
             icon: Icon(Icons.done),
@@ -20,5 +19,4 @@ class BottomSheetViewExample extends StatelessWidget {
       ).withPadding(s32Padding),
     );
   }
-
 }

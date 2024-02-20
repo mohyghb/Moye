@@ -22,9 +22,13 @@ void main() {
   });
 
   test('get week day date', () {
-    expect('Fri 7th', dt.getWeekDayDate(shortWeekDay: true, includeSuffix: true));
-    expect('Fri 7', dt.getWeekDayDate(shortWeekDay: true, includeSuffix: false));
-    expect('Friday 7th', dt.getWeekDayDate(shortWeekDay: false, includeSuffix: true));
-    expect('Friday 7', dt.getWeekDayDate(shortWeekDay: false, includeSuffix: false));
+    expect(
+        'Fri 7th', dt.getWeekDayDate(shortWeekDay: true, includeSuffix: true));
+    expect(
+        'Fri 7', dt.getWeekDayDate(shortWeekDay: true, includeSuffix: false));
+    expect('Friday 7th',
+        dt.getWeekDayDate(shortWeekDay: false, includeSuffix: true));
+    expect('Friday 7',
+        dt.getWeekDayDate(shortWeekDay: false, includeSuffix: false));
   });
 }

@@ -18,7 +18,8 @@ class ShowcaseWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          if (title != null) Text(title ?? '', style: context.textTheme.titleLarge),
+          if (title != null)
+            Text(title ?? '', style: context.textTheme.titleLarge),
           if (description != null) ...[
             Text(description ?? '', style: context.textTheme.bodyMedium),
             s16HeightBox,

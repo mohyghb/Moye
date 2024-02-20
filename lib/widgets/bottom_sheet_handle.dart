@@ -25,7 +25,8 @@ class BottomSheetHandle extends StatelessWidget {
       height: height,
       margin: padding,
       decoration: BoxDecoration(
-        color: handleColor ?? context.colorScheme.onBackground.withOpacity(0.75),
+        color:
+            handleColor ?? context.colorScheme.onBackground.withOpacity(0.75),
         borderRadius: borderRadius ?? BorderRadius.circular(25),
       ),
     );

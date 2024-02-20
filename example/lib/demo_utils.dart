@@ -1,5 +1,4 @@
 class DemoUtils {
-
   static const List<String> IMAGE_URLS = [
     'https://images.pexels.com/photos/2441454/pexels-photo-2441454.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
     // Photo by Maxime Francis from Pexels
@@ -11,6 +10,4 @@ class DemoUtils {
     // Photo by Frederik Sørensen from Pexels
     'https://images.pexels.com/photos/2787469/pexels-photo-2787469.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
   ];
-
-
 }

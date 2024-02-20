@@ -8,18 +8,15 @@ class AuthView extends StatefulWidget {
   State<StatefulWidget> createState() {
     return AuthViewState();
   }
-
 }
 
 class AuthViewState extends State<AuthView> {
-
   @override
   void initState() {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
         systemNavigationBarColor: Colors.transparent,
         statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.light
-    ));
+        statusBarIconBrightness: Brightness.light));
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
     super.initState();
   }
@@ -34,18 +31,26 @@ class AuthViewState extends State<AuthView> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               16.heightBox,
-              Text('Think\nDifferent', style: context.textTheme.displayMedium.bold.withColor(Colors.white70)),
+              Text('Think\nDifferent',
+                  style: context.textTheme.displayMedium.bold
+                      .withColor(Colors.white70)),
               8.heightBox,
-              Text('Some sort of description goes here. '*5, style: TextStyle(color: Colors.white70)),
+              Text('Some sort of description goes here. ' * 5,
+                  style: TextStyle(color: Colors.white70)),
               1.expanded,
-              ElevatedButton(onPressed: (){}, child: Text('Create new Account').withPadding(16.allInset)).withRoundCorners().withPadding(8.horizontalInset),
+              ElevatedButton(
+                      onPressed: () {},
+                      child:
+                          Text('Create new Account').withPadding(16.allInset))
+                  .withRoundCorners()
+                  .withPadding(8.horizontalInset),
               2.heightBox,
-              TextButton(onPressed: (){}, child: Text('Already have an account?')),
+              TextButton(
+                  onPressed: () {}, child: Text('Already have an account?')),
             ],
           ).withPadding(16.allInset),
         )
       ],
     );
   }
-
 }

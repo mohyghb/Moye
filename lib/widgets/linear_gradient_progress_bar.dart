@@ -49,13 +49,15 @@ class LinearGradientProgressBar extends StatelessWidget {
         borderRadius: borderRadius,
         color: backgroundColor ?? context.colorScheme.background,
         border: border,
-        boxShadow: !enableGlow ? [] : [
-          BoxShadow(
-            color: glowColor ?? gradient.colors.first,
-            blurRadius: blurRadius,
-            spreadRadius: spreadRadius,
-          )
-        ],
+        boxShadow: !enableGlow
+            ? []
+            : [
+                BoxShadow(
+                  color: glowColor ?? gradient.colors.first,
+                  blurRadius: blurRadius,
+                  spreadRadius: spreadRadius,
+                )
+              ],
       ),
       child: LayoutBuilder(
         builder: (context, constraints) {
