@@ -5,7 +5,7 @@ A streamlined Flutter package designed to minimize the code required for creatin
 <img src="https://github.com/mohyghb/Moye/assets/37986616/0c7e7f50-f139-4594-b0a7-1617fb39172a" width="200"/>
 
 
-## Extensions
+# Extensions
 
 Tired of wrapping your widgets inside a Expand widget to make them expanded? You can use the `expanded` widget to avoid wrapping multiple layers of widgets around your widget and make it more readable.
 
@@ -103,5 +103,32 @@ Boxes allow you to define spaces between different widgets.
 2. s8WidthBox
 3. s8HeightBox
 ```
+
+# Gradient Overlay
+
+Add gradient overlays on top of your widgets to make them unique. You can apply these shaders on top of Text, Image, and any widget that you currently have. Gradient overlay also has an extension which can easily be invoked on any widget!
+
+<img src="https://github.com/mohyghb/Moye/assets/37986616/e71543f0-e31e-42be-b705-2555686ec7d8"/>
+
+
+```dart
+Column(
+  crossAxisAlignment: CrossAxisAlignment.stretch,
+  children: [
+    Text('Gradient Overlay', style: context.textTheme.headlineLarge.bold),
+    s8HeightBox,
+    Text('Here is how gradient overlay looks' * 5)
+  ],
+).withGradientOverlay(
+  gradient: LinearGradient(
+    colors: [
+      context.colorScheme.primary,
+      context.colorScheme.tertiary,
+      context.colorScheme.primary,
+    ],
+  ),
+)
+```
+
 
 
