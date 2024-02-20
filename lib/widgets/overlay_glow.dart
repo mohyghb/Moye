@@ -38,7 +38,8 @@ extension OverlayGlowExtension on Widget {
     return OverlayGlowWidget(
       child: this,
       glows: [
-        OverlayGlows.getHeaderGlow(context, color: color, rect: rect, blurRadius: blurRadius, height: height),
+        OverlayGlows.getHeaderGlow(context,
+            color: color, rect: rect, blurRadius: blurRadius, height: height),
       ],
     );
   }

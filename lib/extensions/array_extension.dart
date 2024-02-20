@@ -1,6 +1,4 @@
 extension ArrayExtension on List<num> {
-
-
   /// returns true if [list] is in ascending order or it's empty
   bool get isAscendingOrder {
     if (isEmpty) {
@@ -15,5 +13,4 @@ extension ArrayExtension on List<num> {
     }
     return true;
   }
-
 }

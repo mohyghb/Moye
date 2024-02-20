@@ -1,4 +1,3 @@
-/// This file exports most used functionality of this package
 export 'package:moye/constants.dart';
 export 'package:moye/extensions/array_extension.dart';
 export 'package:moye/extensions/datetime_extension.dart';

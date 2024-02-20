@@ -17,8 +17,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       themeMode: ThemeMode.dark,
-      darkTheme: ThemeData(brightness: Brightness.dark, useMaterial3: true, colorSchemeSeed: Colors.blue.shade900),
-      theme: ThemeData(brightness: Brightness.light, useMaterial3: true, colorSchemeSeed: Colors.blue.shade900),
+      darkTheme: ThemeData(
+          brightness: Brightness.dark,
+          useMaterial3: true,
+          colorSchemeSeed: Colors.blue.shade900),
+      theme: ThemeData(
+          brightness: Brightness.light,
+          useMaterial3: true,
+          colorSchemeSeed: Colors.blue.shade900),
       home: MyHomePage(),
       debugShowCheckedModeBanner: false,
     );
@@ -44,14 +50,18 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               ShowcaseWidget(
                 child: Column(
-                  children: [Text('Here are the capabilities of this package', style: context.textTheme.titleMedium)],
+                  children: [
+                    Text('Here are the capabilities of this package',
+                        style: context.textTheme.titleMedium)
+                  ],
                 ),
               ),
               ShowcaseWidget(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Text('Gradient Overlay', style: context.textTheme.headlineLarge.bold),
+                    Text('Gradient Overlay',
+                        style: context.textTheme.headlineLarge.bold),
                     s8HeightBox,
                     Text('Here is how gradient overlay looks' * 5)
                   ],
@@ -73,7 +83,8 @@ class _MyHomePageState extends State<MyHomePage> {
               ).withGlowContainer(blurRadius: 10),
               ShowcaseWidget(
                 title: 'Linear Gradient Progress Bar',
-                description: 'a progress bar that can have gradient colors and box shadows with animation when value changes',
+                description:
+                    'a progress bar that can have gradient colors and box shadows with animation when value changes',
                 child: LinearGradientProgressBar(
                   value: 0.3,
                   borderRadius: BorderRadius.circular(56),
@@ -135,8 +146,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           borderRadius: BorderRadius.circular(16),
                           config: WrapBottomSheetConfig(
                             builder: (context, controller) {
-                              return buildBottomSheetContent(
-                                  context, 'Wrap', 'This type of bottom sheet wraps its content');
+                              return buildBottomSheetContent(context, 'Wrap',
+                                  'This type of bottom sheet wraps its content');
                             },
                           ),
                         );
@@ -153,7 +164,9 @@ class _MyHomePageState extends State<MyHomePage> {
                               return SingleChildScrollView(
                                 controller: controller,
                                 child: buildBottomSheetContent(
-                                    context, 'Scrollable', 'This type of bottom sheet allows it to be draggable'),
+                                    context,
+                                    'Scrollable',
+                                    'This type of bottom sheet allows it to be draggable'),
                               );
                             },
                           ),
@@ -182,14 +195,16 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  SafeArea buildBottomSheetContent(BuildContext context, String bottomSheetType, String description) {
+  SafeArea buildBottomSheetContent(
+      BuildContext context, String bottomSheetType, String description) {
     return SafeArea(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const BottomSheetHandle().alignCenter,
           s8HeightBox,
-          Text('$bottomSheetType Bottom Sheet', style: context.textTheme.headlineMedium.bold)
+          Text('$bottomSheetType Bottom Sheet',
+                  style: context.textTheme.headlineMedium.bold)
               .withPadding(s16HorizontalPadding),
           s4HeightBox,
           Text(description).withPadding(s16HorizontalPadding),
