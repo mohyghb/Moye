@@ -158,3 +158,17 @@ LinearGradientProgressBar(
 )
 ```
 
+# Progress Button
+Show a feedback to your user while performing an action and debounce any incoming presses onto the button for that duration.
+
+<img src="https://github.com/mohyghb/Moye/assets/37986616/24bc8616-b7f5-4e85-b75b-b6b707677843"/>
+
+```dart
+ProgressButton(
+  onPressed: () async {
+    await Future.delayed(const Duration(seconds: 1));
+  },
+  child: const Text('Progress button - inside loading'),
+  icon: Icon(Icons.send),
+)
+```
