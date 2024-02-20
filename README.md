@@ -130,5 +130,15 @@ Column(
 )
 ```
 
+# Glow Container
+
+Add a backdrop glow to any widget of your choice. Enhances your UI/UX and makes it more futurisic! You can customize the color, blur radius, and spared radius, and it comes with its own extension!
+
+<img src="https://github.com/mohyghb/Moye/assets/37986616/dc2d2331-7bbe-4a4a-b127-79796092757e"/>
+
+```dart
+YourWidget().withGlowContainer(blurRadius: 10)
+```
+
 
 
