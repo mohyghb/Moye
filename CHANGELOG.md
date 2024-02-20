@@ -1,3 +1,8 @@
+## 3.0.0
+* Added documentation to every class
+* Updated README.md to have the necessary starter information and showcase this package
+* Updated to dart 3
+
 ## 2.3.0
 * Introduced GradientOverlay - apply gradient overlay on top of your widgets
 * Fixed progress button bugs
