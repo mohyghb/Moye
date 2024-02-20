@@ -140,5 +140,21 @@ Add a backdrop glow to any widget of your choice. Enhances your UI/UX and makes 
 YourWidget().withGlowContainer(blurRadius: 10)
 ```
 
+# Linear Gradient Progress Bar
+Make your linear progress bars support both gradient colors and a back glow!
 
+<img src="https://github.com/mohyghb/Moye/assets/37986616/ea701145-90db-48fb-bad4-20ec28c5d885"/>
+
+```dart
+LinearGradientProgressBar(
+  value: 0.3,
+  borderRadius: BorderRadius.circular(56),
+  gradient: LinearGradient(
+    colors: [
+      context.colorScheme.primary,
+      context.colorScheme.tertiary,
+    ],
+  ),
+)
+```
 
