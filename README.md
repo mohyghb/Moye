@@ -172,3 +172,36 @@ ProgressButton(
   icon: Icon(Icons.send),
 )
 ```
+
+# BottomSheet Utils
+Easily show 3 different types of bottom sheets: default, wrap, and scrollable.
+
+<img src="https://github.com/mohyghb/Moye/assets/37986616/2216eb13-ef74-4faa-949b-400910bc9bfb"/>
+
+```dart
+BottomSheetUtils.showBottomSheet(
+  context: context,
+  borderRadius: BorderRadius.circular(16),
+  config: WrapBottomSheetConfig(
+    builder: (context, controller) {
+      return buildBottomSheetContent(context, 'Wrap',
+          'This type of bottom sheet wraps its content');
+    },
+  ),
+);
+```
+
+# Back Blur Image
+Blur any image and put it behind any widget to enhance your UI/UX.
+
+<img src="https://github.com/mohyghb/Moye/assets/37986616/9c51be48-adbe-420d-9bfd-61f031c3b9a7"/>
+
+```dart
+Container(
+  width: 100,
+  height: 100,
+).withBackBlurImage(
+    imageProvider: NetworkImage(
+        'https://i.natgeofe.com/n/b103fff5-6a84-4d19-b65e-5856998816c3/PIA19952.jpg?w=1440&h=1440')),
+)
+```
