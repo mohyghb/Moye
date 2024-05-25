@@ -1,3 +1,6 @@
+## 3.1.0
+* Introduced ResponsiveAspectRatio - a widget that allows you to adjust the child as the layouts aspect ratio changes
+
 ## 3.0.0
 * Added documentation to every class
 * Updated README.md to have the necessary starter information and showcase this package
