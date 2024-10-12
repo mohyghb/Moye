@@ -1,3 +1,6 @@
+## 3.2.0
+* Use MediaQuery.viewInsetsOf to get the viewInsets of the context instead of MediaQuery.of(context).viewInsets to only rebuild the widget when the viewInsets changes
+
 ## 3.1.0
 * Introduced ResponsiveAspectRatio - a widget that allows you to adjust the child as the layouts aspect ratio changes
 
