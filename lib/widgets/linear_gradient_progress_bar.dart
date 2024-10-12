@@ -47,7 +47,7 @@ class LinearGradientProgressBar extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         borderRadius: borderRadius,
-        color: backgroundColor ?? context.colorScheme.background,
+        color: backgroundColor ?? context.colorScheme.surface,
         border: border,
         boxShadow: !enableGlow
             ? []

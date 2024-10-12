@@ -56,7 +56,7 @@ class FadeContainer extends StatelessWidget {
     Color? fadeColor,
     double startFade = 0.97,
   }) {
-    var overlayColor = fadeColor ?? context.colorScheme.background;
+    var overlayColor = fadeColor ?? context.colorScheme.surface;
     return FadeContainer(
       child: child,
       fadeColors: [
@@ -80,7 +80,7 @@ class FadeContainer extends StatelessWidget {
     required Widget child,
     Color? fadeColor,
   }) {
-    var overlayColor = fadeColor ?? context.colorScheme.background;
+    var overlayColor = fadeColor ?? context.colorScheme.surface;
     return FadeContainer(
       child: child,
       begin: Alignment.centerLeft,
@@ -102,7 +102,7 @@ class FadeContainer extends StatelessWidget {
     Color? fadeColor,
     double startFade = 0.97,
   }) {
-    Color overlayColor = fadeColor ?? context.colorScheme.background;
+    Color overlayColor = fadeColor ?? context.colorScheme.surface;
     return FadeContainer(
       child: child,
       fadeColors: [Colors.transparent, overlayColor],
@@ -117,7 +117,7 @@ class FadeContainer extends StatelessWidget {
     Color? fadeColor,
     double stopFade = 0.03,
   }) {
-    Color overlayColor = fadeColor ?? context.colorScheme.background;
+    Color overlayColor = fadeColor ?? context.colorScheme.surface;
     return FadeContainer(
       child: child,
       begin: Alignment.topCenter,
