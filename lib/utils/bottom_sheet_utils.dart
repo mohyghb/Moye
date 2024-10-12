@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:moye/moye.dart';
 
 /// [controller] is only present if using the ScrollableBottomSheetType
-typedef BottomSheetChildBuilder = Widget Function(
-    BuildContext context, ScrollController? controller);
+typedef BottomSheetChildBuilder = Widget Function(BuildContext context, ScrollController? controller);
 
 abstract class BottomSheetConfig {
   final bool isScrollControlled;
@@ -36,11 +35,9 @@ class DefaultBottomSheetConfig extends BottomSheetConfig {
 
   @override
   Widget build(BuildContext context) {
-    return super.builder(context, null).withPadding(
-          super.adjustToKeyboardChanges
-              ? context.mediaQuery.viewInsets
-              : EdgeInsets.zero,
-        );
+    return super
+        .builder(context, null)
+        .withPadding(super.adjustToKeyboardChanges ? context.viewInsets : EdgeInsets.zero);
   }
 }
 
@@ -59,9 +56,7 @@ class WrapBottomSheetConfig extends BottomSheetConfig {
       children: [
         super.builder(context, null),
       ],
-    ).withPadding(super.adjustToKeyboardChanges
-        ? context.mediaQuery.viewInsets
-        : EdgeInsets.zero);
+    ).withPadding(super.adjustToKeyboardChanges ? context.viewInsets : EdgeInsets.zero);
   }
 }
 
@@ -105,9 +100,7 @@ class ScrollableBottomSheetConfig extends BottomSheetConfig {
       builder: (BuildContext context, ScrollController scrollController) {
         return super.builder(context, scrollController);
       },
-    ).withPadding(super.adjustToKeyboardChanges
-        ? context.mediaQuery.viewInsets
-        : EdgeInsets.zero);
+    ).withPadding(super.adjustToKeyboardChanges ? context.viewInsets : EdgeInsets.zero);
   }
 }
 

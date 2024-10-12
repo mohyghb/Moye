@@ -186,6 +186,8 @@ extension MoyeContextExtension on BuildContext {
 
   double get screenHeight => MediaQuery.sizeOf(this).height;
 
+  EdgeInsets get viewInsets => MediaQuery.viewInsetsOf(this);
+
   Size get screenSize => MediaQuery.sizeOf(this);
 
   bool get isThemeDark => Theme.of(this).brightness == Brightness.dark;
