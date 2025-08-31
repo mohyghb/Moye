@@ -71,7 +71,7 @@ class OverlayGlows {
     return OverlayGlow(
       boxShadow: BoxShadow(
         blurRadius: blurRadius ?? 100,
-        color: color ?? context.colorScheme.primary.withOpacity(0.75),
+        color: color ?? context.colorScheme.primary.withAlpha(191),
       ),
       rect: rect ?? Rect.fromLTWH(0, 0, context.screenWidth, height),
     );

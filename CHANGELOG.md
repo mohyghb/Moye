@@ -1,3 +1,7 @@
+## 3.3.0
+* Minor enhancements to FadeContainer, OverlayGlow, and replaced withOpacity with withAlpha
+* BREAKING CHANGE: Deprecated static methods from FadeContainer, you can use the extension methods directly on widgets now
+
 ## 3.2.0
 * Use MediaQuery.viewInsetsOf to get the viewInsets of the context instead of MediaQuery.of(context).viewInsets to only rebuild the widget when the viewInsets changes
 
