@@ -22,10 +22,10 @@ class GlowContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.transparent,
+        color: context.transparent,
         boxShadow: [
           BoxShadow(
-            color: color ?? context.colorScheme.primary.withOpacity(0.6),
+            color: color ?? context.colorScheme.primary.withAlpha(153),
             blurRadius: blurRadius,
             spreadRadius: spreadRadius,
           )

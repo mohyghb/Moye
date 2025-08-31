@@ -205,6 +205,8 @@ extension MoyeContextExtension on BuildContext {
   Brightness get brightness => Theme.of(this).brightness;
 
   MediaQueryData get mediaQuery => MediaQuery.of(this);
+
+  Color get transparent => isThemeDark ? Colors.transparent : Color(0x00FFFFFF);
 }
 
 /// Extension for text styles to make everything easier

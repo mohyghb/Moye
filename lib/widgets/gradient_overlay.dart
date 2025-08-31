@@ -5,11 +5,13 @@ import 'package:flutter/material.dart';
 class GradientOverlay extends StatelessWidget {
   final Gradient gradient;
   final Widget child;
+  final BlendMode blendMode;
 
   const GradientOverlay({
     super.key,
     required this.gradient,
     required this.child,
+    this.blendMode = BlendMode.srcATop,
   });
 
   @override
@@ -18,7 +20,7 @@ class GradientOverlay extends StatelessWidget {
       shaderCallback: (rect) {
         return gradient.createShader(rect);
       },
-      blendMode: BlendMode.srcATop,
+      blendMode: blendMode,
       child: child,
     );
   }
